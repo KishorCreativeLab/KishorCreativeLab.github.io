@@ -14,33 +14,69 @@
   padding-bottom: 180px;     /* Room at the bottom for the footer */
 }
 .header, .footer {
-  padding: 1.4em 0 1.1em 0;
+background: linear-gradient(90deg, #27408b, #337abb);
+color: #fff;
+text-align: center;
+padding: 2.5em 0 2em 0;
+width: 100vw;
+margin-left: calc(-1 * ((100vw - 100%) / 2));
+}
+.nav {
+background: #141f34;
+text-align: center;
+padding: 1.2em 0;
+}
+.nav a {
+color: #fff;
+text-decoration: none;
+margin: 0 22px;
+font-weight: 600;
+letter-spacing: 1.5px;
+font-size: 1.15em;
+transition: color 0.2s;
+border-bottom: 2px solid transparent;
+padding-bottom: 2px;
+}
+.nav a:hover, .nav a.active {
+color: #ffcb05;
+border-bottom: 2px solid #ffcb05;
 }
 .gallery {
-  padding: 2em 1em 4em 1em;
-  gap: 1.3em;
-  max-width: 900px;
-  margin: 2em auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 2em;
+padding: 4em 2em 6em 2em;
+max-width: 1100px;
+margin: 3em auto;
 }
 .blog-card {
-  border-radius: 12px;
-  box-shadow: 0 1px 6px #aacff822;
+background: #fff;
+border-radius: 16px;
+box-shadow: 0 3px 14px #aacff899;
+text-align: center;
+overflow: hidden;
+transition: box-shadow 0.2s;
 }
-.blog-card img {
-  height: 140px; /* Compact image height */
-}
+.blog-card:hover { box-shadow: 0 8px 28px #68a6e755; }
+.blog-card img { width: 100%; height: 180px; object-fit: cover; }
+.blog-card-title { font-size: 1.3em; font-weight: 700; color: #27408b; margin: 1em 0 0.4em 0; }
+.blog-card a { display: block; color: #337abb; text-decoration: none; font-weight: 600; padding: 1em; }
+.blog-card a:hover { color: #ffcb05; }
 #entertainment, #about, #contact, #counseling {
-  padding: 1.2em 1em;
-  margin: 1.1em auto;
-  border-radius: 10px;
+padding-top: 5em;
+padding-bottom: 5em;
 }
 .footer {
-  padding: 1.2em 0 1.2em 0;
-  margin-top: 1em;
+margin-top: 2em;
+padding: 2em 0 2em 0;
+width: 100vw;
+background: linear-gradient(90deg, #27408b, #337abb);
+color: #fff;
+text-align: center;
+position: relative;
+z-index: 1;
 }
-@media (max-width:700px) {
-  .gallery { padding: 0.4em; gap: 0.8em; }
-  .blog-card img { height: 95px; }
+@media (max-width:700px) { .gallery { padding: 1em; }
 }
   </style>
 </head>
