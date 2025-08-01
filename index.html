@@ -10,8 +10,8 @@
   margin: 0;
   font-family: 'Montserrat', Arial, sans-serif;
   background: #f0f6fb;
-  min-height: 200vh;           /* Ensures page is always tall enough */
-  padding-bottom: 160px;       /* Leaves room at the bottom for the footer */
+  min-height: 220vh;         /* Slightly taller for more space */
+  padding-bottom: 180px;     /* Room at the bottom for the footer */
 }
 .header, .footer {
   background: linear-gradient(90deg, #27408b, #337abb);
@@ -45,7 +45,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2em;
-  padding: 4em 2em 6em 2em;   /* padding-bottom bumped a bit */
+  padding: 4em 2em 6em 2em;
   max-width: 1100px;
   margin: 3em auto;
 }
@@ -57,11 +57,11 @@
   overflow: hidden;
   transition: box-shadow 0.2s;
 }
-.blog-card:hover { box-shadow:0 8px 28px #68a6e755;}
-.blog-card img { width:100%; height:180px; object-fit:cover;}
-.blog-card-title { font-size:1.3em; font-weight:700; color:#27408b; margin:1em 0 0.4em 0;}
-.blog-card a { display:block; color:#337abb; text-decoration:none; font-weight:600; padding:1em;}
-.blog-card a:hover { color:#ffcb05; }
+.blog-card:hover { box-shadow: 0 8px 28px #68a6e755; }
+.blog-card img { width: 100%; height: 180px; object-fit: cover; }
+.blog-card-title { font-size: 1.3em; font-weight: 700; color: #27408b; margin: 1em 0 0.4em 0; }
+.blog-card a { display: block; color: #337abb; text-decoration: none; font-weight: 600; padding: 1em; }
+.blog-card a:hover { color: #ffcb05; }
 #entertainment, #about, #contact {
   padding-top: 5em;
   padding-bottom: 5em;
@@ -69,10 +69,14 @@
 .footer {
   margin-top: 2em;
   padding: 2em 0 2em 0;
-  position: relative;         /* Ensure it stays in flow, NOT fixed or absolute */
   width: 100vw;
+  background: linear-gradient(90deg, #27408b, #337abb);
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
-@media (max-width:700px) { .gallery { padding: 1em; } }
+@media (max-width:700px) { .gallery { padding: 1em; } 
 }
   </style>
 </head>
