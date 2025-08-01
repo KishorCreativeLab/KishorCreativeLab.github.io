@@ -66,10 +66,11 @@
   padding-top: 5em;
   padding-bottom: 5em;
 }
-/* Fix the footer */
 .footer {
   margin-top: 2em;
   padding: 2em 0 2em 0;
+  position: relative;         /* Ensure it stays in flow, NOT fixed or absolute */
+  width: 100vw;
 }
 @media (max-width:700px) { .gallery { padding: 1em; } }
 }
