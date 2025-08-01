@@ -90,16 +90,23 @@ padding-top: 5em;
 padding-bottom: 2em;
 }
 .footer {
-margin-top: 2em;
-padding: 2em 0 2em 0;
-width: 100vw;
-background: linear-gradient(90deg, #27408b, #337abb);
-color: #fff;
-text-align: center;
-position: relative;
-z-index: 1;
+font-size: 1.1em;
+letter-spacing:0.4px;
+border-radius: 0 0 0 0;
+margin-bottom: 0;
+margin-top: 1.5em;
 }
-@media (max-width:700px) { .gallery { padding: 1em; }
+.footer a { color: #ffe066; text-decoration: underline; }
+.footer a:hover { color: #fff; }
+@media (max-width: 980px) {
+.content {padding: 1.1em;}
+.feature-img { float: none; display:block; margin: 0 auto 1.2em; width:90vw; max-width: 100%; }
+}
+@media (max-width: 700px) {
+.content { padding: 0.7em; }
+.header img { width: 80px; }
+.header h1 { font-size:2em;}
+.feature-img { margin:0 auto 1.0em; min-width: 140px;}
 }
   </style>
 </head>
