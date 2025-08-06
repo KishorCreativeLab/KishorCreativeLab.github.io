@@ -6,11 +6,11 @@
 <title>KishorCreativeLab – Blog, Fun & Counseling</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  /* Reset & base */
+  /* Reset */
   *, *::before, *::after {
     box-sizing: border-box;
   }
-  body, h1, h2, h3, p, ul, li, a {
+  body, h1, h2, h3, p, ul, li, a, nav, header, footer, main, section {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -18,7 +18,6 @@
   body {
     background: linear-gradient(135deg, #f0f6fb 0%, #dbeeff 100%);
     color: #243447;
-    line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -32,95 +31,127 @@
     color: #ffcb05;
     outline: none;
   }
-
+  
   /* Container */
   .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 3rem;
-    flex-grow: 1;
   }
-
+  
   /* Header */
   header {
     background: linear-gradient(90deg, #27408b, #337abb);
     color: #fff;
-    padding: 2.5rem 0 1.5rem;
-    text-align: center;
+    padding: 1.5rem 0;
     box-shadow: 0 4px 14px rgb(51 122 187 / 0.5);
   }
-  header img {
-    width: 100px;
-    max-width: 120px;
+  header .branding {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  header .branding img {
+    width: 90px;
     border-radius: 15px;
     background: #fff;
     padding: 6px;
-    box-shadow: 0 5px 16px rgba(35, 44, 60, 0.12);
-    margin-bottom: 0.5rem;
+    box-shadow: 0 5px 16px rgba(35,44,60,0.12);
+  }
+  header .branding div {
+    line-height: 1.1;
   }
   header h1 {
     font-weight: 700;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     letter-spacing: 1.2px;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.1rem;
   }
   header p {
     font-weight: 500;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: #ffd500;
   }
-
+  
   /* Navigation */
   nav {
-    background-color: #141f34;
+    background: #141f34;
+    box-shadow: inset 0 -2px 0 0 #ffcb05;
+  }
+  nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    padding: 1rem 0;
-    box-shadow: inset 0 -2px 0 0 #ffcb05;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  nav li {
+    position: relative;
   }
   nav a {
     color: #fff;
     font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 1.5px;
-    margin: 0 1.2em;
-    padding-bottom: 0.2em;
+    font-size: 1.05rem;
+    padding: 1rem 1.25rem;
+    display: block;
+    letter-spacing: 1.4px;
     border-bottom: 3px solid transparent;
-    transition: border-color 0.3s, color 0.3s;
   }
-  nav a.active, nav a:hover, nav a:focus {
+  nav a.active,
+  nav a:hover,
+  nav a:focus {
     color: #ffcb05;
     border-bottom-color: #ffcb05;
     outline: none;
   }
   nav a:focus-visible {
-    outline-offset: 2px;
+    outline-offset: 3px;
     outline-color: #ffcb05;
   }
-
-  /* Main content */
-  main {
-    margin-top: 2.5rem;
+  
+  /* Hero / Jumbotron */
+  .jumbotron {
+    background: linear-gradient(90deg, #1b2c57, #27408b);
+    color: #fff;
+    padding: 3rem 1rem;
+    text-align: center;
+    box-shadow: 0 6px 20px rgb(39 64 139 / 0.75);
   }
-
-  /* Blog & Story cards grid */
+  .jumbotron h2 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    max-width: 900px;
+    margin: 0 auto 0.6em;
+  }
+  .jumbotron p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #ffe066;
+  }
+  
+  /* Cards Grid */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 1.8rem 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   article.card {
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 4px 18px rgb(158 195 226 / 0.25);
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     transition: transform 0.3s ease;
   }
-  article.card:hover, article.card:focus-within {
+  article.card:hover,
+  article.card:focus-within {
     transform: translateY(-5px);
     box-shadow: 0 10px 32px rgb(158 195 226 / 0.4);
   }
@@ -132,67 +163,66 @@
     flex-shrink: 0;
   }
   article.card .card-content {
-    padding: 1rem 1.1rem 1.4rem;
+    padding: 1rem 1.25rem 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
   article.card .card-title {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #27408b;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.8rem;
     flex-grow: 1;
   }
   article.card a.read-more {
     align-self: flex-start;
     font-weight: 600;
-    text-transform: uppercase;
     font-size: 0.9rem;
     color: #ffcb05;
+    text-transform: uppercase;
   }
-  article.card a.read-more:hover, article.card a.read-more:focus {
+  article.card a.read-more:hover,
+  article.card a.read-more:focus {
     text-decoration: underline;
     outline: none;
   }
-
-  /* Sections with headings */
+  
+  /* Sections */
   section {
     background: #ffffffec;
     border-radius: 14px;
     box-shadow: 0 6px 28px #9fc3e2aa;
     padding: 2.5rem 2rem 2rem;
-    margin-bottom: 3rem;
     max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 3rem auto;
   }
   section h2 {
     color: #27408b;
     border-bottom: 3px solid #eaeaea;
     padding-bottom: 0.3rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.9rem;
   }
   section ul {
     list-style-type: disc;
-    padding-left: 1.4rem;
+    padding-left: 1.5rem;
     color: #243447;
-    font-size: 1.05rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.6;
   }
   section p {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: #345678;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-
+  
   /* Footer */
   footer {
     background: linear-gradient(90deg, #27408b, #337abb);
     color: #fff;
-    padding: 1.8rem 1rem;
+    padding: 2rem 1rem;
     text-align: center;
     font-size: 1rem;
     letter-spacing: 0.4px;
@@ -202,49 +232,87 @@
     color: #ffe066;
     text-decoration: underline;
   }
-  footer a:hover, footer a:focus {
+  footer a:hover,
+  footer a:focus {
     color: #fff;
     outline: none;
   }
-
-  /* Responsive tweaks */
+  
+  /* Social Icons */
+  .social-icons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+  }
+  .social-icons a {
+    color: #ffe066;
+    font-size: 1.3rem;
+  }
+  .social-icons a:hover,
+  .social-icons a:focus {
+    color: #fff;
+  }
+  
+  /* Responsive */
   @media (max-width: 600px) {
+    header .branding {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
     header h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
     nav a {
+      padding: 0.75rem 0.75rem;
       font-size: 1rem;
-      margin: 0 12px;
+    }
+    .jumbotron h2 {
+      font-size: 1.9rem;
     }
     article.card img {
       height: 140px;
     }
     section {
-      padding: 2rem 1.2rem 1.8rem;
+      margin: 2rem 1rem;
+      padding: 1.8rem 1.5rem 1.5rem;
     }
   }
 </style>
 </head>
 <body>
+
 <header>
-  <img src="images/Logo.png" alt="Kishor Creative Lab Logo" width="100" height="100" />
-  <h1>KishorCreativeLab</h1>
-  <p>Blogging | Entertainment | Counseling for a Peaceful Life</p>
+  <div class="branding container">
+    <img src="images/Logo.png" alt="Kishor Creative Lab Logo" width="90" height="90" />
+    <div>
+      <h1>KishorCreativeLab</h1>
+      <p>Blogging | Entertainment | Counseling for a Peaceful Life</p>
+    </div>
+  </div>
 </header>
 
 <nav>
-  <a href="index.html" class="active" aria-current="page">Home</a>
-  <a href="blog.html">Blog</a>
-  <a href="#story">Story</a>
-  <a href="#counseling">Counseling</a>
-  <a href="#entertainment">Entertainment</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
+  <ul>
+    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#counseling">Counseling</a></li>
+    <li><a href="#entertainment">Entertainment</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
+<section class="jumbotron">
+  <h2>Welcome to KishorCreativeLab</h2>
+  <p>Explore Personal Development, Mindful Living, Counseling Strategies and So Much More!</p>
+</section>
+
 <main class="container" role="main">
-  <section aria-label="Featured Blogs and Stories" class="grid">
-    <!-- Blog cards -->
+
+  <section aria-label="Featured Blogs and Stories" class="grid" id="story">
+    <!-- Blog Cards -->
     <article class="card" tabindex="0">
       <img src="images/1.png" alt="Unlock Your Potential: Personal Development Tips" />
       <div class="card-content">
@@ -273,8 +341,8 @@
         <a href="personal-development.html" class="read-more">Read Blog</a>
       </div>
     </article>
-    <!-- Story cards -->
-    <article class="card" tabindex="0" id="story">
+    <!-- Story Cards -->
+    <article class="card" tabindex="0">
       <img src="images/2.png" alt="Mindful Living: Wellness and Inspiration for Happiness" />
       <div class="card-content">
         <div class="card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
@@ -322,14 +390,21 @@
     <h2 id="contact-title">Contact</h2>
     <ul>
       <li>Email: <a href="mailto:kishorcreativelab@gmail.com">kishorcreativelab@gmail.com</a></li>
-      <li>GitHub: <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener">kishorcreativelab</a></li>
+      <li>GitHub: <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener noreferrer">kishorcreativelab</a></li>
     </ul>
   </section>
+  
 </main>
 
 <footer>
   &copy; 2025 KishorCreativeLab · Bundi, Rajasthan, India &nbsp;|&nbsp;
   <a href="mailto:kishorcreativelab@gmail.com">Contact</a>
+  <div class="social-icons" aria-label="Social Media Links">
+    <a href="https://twitter.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Twitter">&#x1F426;</a>
+    <a href="https://www.facebook.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Facebook">&#x1F464;</a>
+    <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">&#x1F4BB;</a>
+  </div>
 </footer>
+
 </body>
 </html>
