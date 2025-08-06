@@ -1,336 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>KishorCreativeLab – Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-height: 100%;
-margin: 0;
-padding: 0;
-}
-body {
-min-height: 100vh;
-font-family: 'Montserrat', Arial, sans-serif;
-background: linear-gradient(135deg, #f0f6fb 0%, #dbeeff 100%);
-color: #243447;
-}
-.header, .footer {
-background: linear-gradient(90deg, #27408b, #337abb);
-color: #fff;
-text-align: center;
-padding: 2.5em 0 2em 0;
-width: 100vw;
-margin-left: calc(-1 * ((100vw - 100%) / 2));
-}
-.header img {
-width: 120px;
-border-radius: 14px;
-margin-bottom: 10px;
-background: #fff;
-padding: 6px;
-box-shadow: 0 5px 16px rgba(35, 44, 60, 0.12);
-}
-.header h1 {
-margin: 0.2em 0 0 0;
-font-size: 3em;
-font-weight: 700;
-letter-spacing: 1px;
-}
-.header p {
-font-size: 1.35em;
-color: #ffd500;
-margin-top: 0.8em;
-}
-.nav {
-background: #141f34;
-text-align: center;
-padding: 1.2em 0;
-}
-.nav a {
-color: #fff;
-text-decoration: none;
-margin: 0 22px;
-font-weight: 600;
-letter-spacing: 1.5px;
-font-size: 1.15em;
-transition: color 0.2s;
-border-bottom: 2px solid transparent;
-padding-bottom: 2px;
-}
-.nav a:hover, .nav a.active {
-color: #ffcb05;
-border-bottom: 2px solid #ffcb05;
-}
-.gallery,
-#counseling, #entertainment, #about, #contact {
-  max-width: 650px;
-  margin: 1.5em auto;
-  width: 94%;
-}
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2em;
-  padding: 1.8em 1em 2em 1em;
-}
-.blog-card img { height: 140px; }
-@media (max-width: 700px) {
-  .gallery { grid-template-columns: 1fr; gap: 0.8em; }
-  .blog-card img { height: 120px; }
-}
-#counseling, #about, #contact, #entertainment {
-  padding: 3em 1.1em;
-  margin: 3em auto;
-  border-radius: 10px;
-}
-.footer {
-font-size: 1.1em;
-letter-spacing:0.4px;
-border-radius: 0 0 0 0;
-margin-bottom: 0;
-margin-top: 1.5em;
-}
-.footer a { color: #ffe066; text-decoration: underline; }
-.footer a:hover { color: #fff; }
-@media (max-width: 980px) {
-.content {padding: 1.1em;}
-.feature-img { float: none; display:block; margin: 0 auto 1.2em; width:90vw; max-width: 100%; }
-}
-@media (max-width: 700px) {
-.content { padding: 0.7em; }
-.header img { width: 80px; }
-.header h1 { font-size:2em;}
-.feature-img { margin:0 auto 1.0em; min-width: 140px;}
-}
-  </style>
-</head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>KishorCreativeLab – Blog, Fun & Counseling</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KishorCreativeLab – Blog, Fun & Counseling</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+  }
+  body {
+    background: linear-gradient(135deg, #f0f6fb 0%, #dbeeff 100%);
+    color: #243447;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    color: #337abb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #ffcb05;
+    outline: none;
+  }
+
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    flex-grow: 1;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #27408b, #337abb);
+    color: #fff;
+    padding: 2.5rem 0 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 14px rgb(51 122 187 / 0.5);
+  }
+  header img {
+    width: 100px;
+    max-width: 120px;
+    border-radius: 15px;
+    background: #fff;
+    padding: 6px;
+    box-shadow: 0 5px 16px rgba(35, 44, 60, 0.12);
+    margin-bottom: 0.5rem;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.25rem;
+  }
+  header p {
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: #ffd500;
+  }
+
+  /* Navigation */
+  nav {
+    background-color: #141f34;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    box-shadow: inset 0 -2px 0 0 #ffcb05;
+  }
+  nav a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    margin: 0 1.2em;
+    padding-bottom: 0.2em;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  nav a.active, nav a:hover, nav a:focus {
+    color: #ffcb05;
+    border-bottom-color: #ffcb05;
+    outline: none;
+  }
+  nav a:focus-visible {
+    outline-offset: 2px;
+    outline-color: #ffcb05;
+  }
+
+  /* Main content */
+  main {
+    margin-top: 2.5rem;
+  }
+
+  /* Blog & Story cards grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.8rem 2rem;
+    margin-bottom: 3rem;
+  }
+  article.card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgb(158 195 226 / 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  article.card:hover, article.card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 32px rgb(158 195 226 / 0.4);
+  }
+  article.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #eee;
+    flex-shrink: 0;
+  }
+  article.card .card-content {
+    padding: 1rem 1.1rem 1.4rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  article.card .card-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #27408b;
+    margin-bottom: 0.7rem;
+    flex-grow: 1;
+  }
+  article.card a.read-more {
+    align-self: flex-start;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #ffcb05;
+  }
+  article.card a.read-more:hover, article.card a.read-more:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  /* Sections with headings */
+  section {
+    background: #ffffffec;
+    border-radius: 14px;
+    box-shadow: 0 6px 28px #9fc3e2aa;
+    padding: 2.5rem 2rem 2rem;
+    margin-bottom: 3rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section h2 {
+    color: #27408b;
+    border-bottom: 3px solid #eaeaea;
+    padding-bottom: 0.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+  section ul {
+    list-style-type: disc;
+    padding-left: 1.4rem;
+    color: #243447;
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  section p {
+    font-size: 1.05rem;
+    color: #345678;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  footer {
+    background: linear-gradient(90deg, #27408b, #337abb);
+    color: #fff;
+    padding: 1.8rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+    box-shadow: 0 -3px 14px rgb(51 122 187 / 0.5);
+  }
+  footer a {
+    color: #ffe066;
+    text-decoration: underline;
+  }
+  footer a:hover, footer a:focus {
+    color: #fff;
+    outline: none;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
     }
-    body {
-      min-height: 100vh;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #f0f6fb 0%, #dbeeff 100%);
-      color: #243447;
+    nav a {
+      font-size: 1rem;
+      margin: 0 12px;
     }
-    .header, .footer {
-      background: linear-gradient(90deg, #27408b, #337abb);
-      color: #fff;
-      padding: 2.5em 0 2em 0;
-      text-align: center;
-      width: 100vw;
-      margin-left: calc(-1 * ((100vw - 100%) / 2));
-    }
-    .header img {
-      width: 120px;
-      border-radius: 14px;
-      margin-bottom: 10px;
-      background: #fff;
-      padding: 6px;
-      box-shadow: 0 5px 16px rgba(35, 44, 60, 0.12);
-    }
-    .header h1 {
-      margin: 0.2em 0 0 0;
-      font-size: 3em;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .header p {
-      font-size: 1.35em;
-      color: #ffd500;
-      margin-top: 0.8em;
-    }
-    .nav {
-      background: #141f34;
-      text-align: center;
-      padding: 1.2em 0;
-    }
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 22px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      font-size: 1.15em;
-      transition: color 0.2s;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 2px;
-    }
-    .nav a:hover, .nav a.active {
-      color: #ffcb05;
-      border-bottom: 2px solid #ffcb05;
-    }
-    .content {
-      max-width: 1200px;
-      margin: 3em auto 3em auto;
-      background: #ffffffec;
-      border-radius: 16px;
-      box-shadow: 0 6px 28px #9fc3e2aa;
-      padding: 3.5em 2.5em 2.5em 2.5em;
-      min-height: 60vh;
+    article.card img {
+      height: 140px;
     }
     section {
-      margin-bottom: 3.5em;
-      overflow: hidden;
+      padding: 2rem 1.2rem 1.8rem;
     }
-    h2 {
-      color: #27408b;
-      border-bottom: 2px solid #eaeaea;
-      padding-bottom: 0.20em;
-      margin-top: 0;
-    }
-    .feature-img {
-      float: right;
-      margin-left: 2em;
-      margin-top: 0.3em;
-      border-radius: 14px;
-      box-shadow: 0 2px 18px #b8dbff99;
-      max-width: 340px;
-      width: 40vw;
-      min-width: 220px;
-      object-fit: cover;
-      background: #eee;
-    }
-    ul {
-      padding-left: 1.8em;
-      margin-bottom: 1.2em;
-    }
-    .quote {
-      font-style: italic;
-      color: #337abb;
-      background: #ecf6ff;
-      border-left: 4px solid #b5daf7;
-      padding: 1em 1.2em;
-      margin: 1em 0 1.7em 0;
-      border-radius: 7px;
-    }
-    .steps {
-      background: linear-gradient(90deg, #f9fafb 80%, #ffe06612 100%);
-      border-left: 4px solid #ffe066;
-      border-radius:14px;
-      padding: 1.4em 1.2em 1.1em 2em;
-      font-size: 1.12em;
-      margin-top:2.8em;
-    }
-    .footer {
-      font-size: 1.1em;
-      letter-spacing:0.4px;
-      border-radius: 0 0 0 0;
-      margin-bottom: 0;
-      margin-top: 1.5em;
-    }
-    .footer a { color: #ffe066; text-decoration: underline; }
-    .footer a:hover { color: #fff; }
-    @media (max-width: 980px) {
-      .content {padding: 1.1em;}
-      .feature-img { float: none; display:block; margin: 0 auto 1.2em; width:90vw; max-width: 100%; }
-    }
-    @media (max-width: 700px) {
-      .content { padding: 0.7em; }
-      .header img { width: 80px; }
-      .header h1 { font-size:2em;}
-      .feature-img { margin:0 auto 1.0em; min-width: 140px;}
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <div class="header">
-    <img src="images/Logo.png" alt="Kishor Creative Lab Logo" style="width:90px; border-radius:15px;">
-    <h1>KishorCreativeLab</h1>
-    <p>Blogging | Entertainment | Counseling for a Peaceful Life</p>
-  </div>
-  <div class="nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="blog.html">Blog</a>
-    <a href="#story">Story</a>
-    <a href="#counseling">Counseling</a>
-    <a href="#entertainment">Entertainment</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="gallery">
-  <div class="blog-card">
-      <img src="images/1.png" alt="Unlock Your Potential: Personal Development Tips" style="width:100%; height:180px; object-fit:cover;">
-      <div class="blog-card-title">Unlock Your Potential: Personal Development Tips</div>
-      <a href="personal-development.html">Read Blog</a>
-  </div>
-    <div class="blog-card">
-  <img src="images/2.png" alt="Mindful Living: Wellness and Inspiration for Happiness" style="width:80%; height:180px; object-fit:cover;">
-  <div class="blog-card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
-  <a href="mindful-living.html">Read Blog</a>
-  </div>
-    <div class="blog-card">
-  <img src="images/3.png" alt="Creative Counseling: Strategies for a Peaceful Mind" style="width:100%; height:180px; object-fit:cover;">
-  <div class="blog-card-title">Creative Counseling: Strategies for a Peaceful Mind</div>
-  <a href="mindful-living.html">Read Blog</a>
-  </div>
-  <div class="blog-card">
-  <img src="images/4.png" alt="Unlock Your Potential: Personal Development Tips" style="width:100%; height:180px; object-fit:cover;">
-  <div class="blog-card-title">Unlock Your Potential: Personal Development Tips</div>
-  <a href="personal-development.html">Read Blog</a>
-  </div>
-  <div class="Story-card">
-    <img src="images/2.png" alt="Mindful Living: Wellness and Inspiration for Happiness" style="width:100%; height:180px; object-fit:cover;">
-    <div class="blog-card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
-    <a href="mindful-living.html">Read Story</a>
-  </div>
-  <div class="Story-card">
-    <img src="images/3.png" alt="Creative Counseling: Strategies for a Peaceful Mind" style="width:100%; height:180px; object-fit:cover;">
-    <div class="blog-card-title">Creative Counseling: Strategies for a Peaceful Mind</div>
-    <a href="creative-counseling.html">Read Story</a>
-  </div>
-  <div class="Story-card">
-    <img src="images/4.png" alt="Inspirational Stories" style="width:100%; height:180px; object-fit:cover;">
-    <div class="blog-card-title">Inspirational Stories: Real Journeys, True Inspiration</div>
-    <a href="story.html">Read Story</a>
-</div>
+<header>
+  <img src="images/Logo.png" alt="Kishor Creative Lab Logo" width="100" height="100" />
+  <h1>KishorCreativeLab</h1>
+  <p>Blogging | Entertainment | Counseling for a Peaceful Life</p>
+</header>
 
-<div id="counseling" class="section">
-  <h2>Counseling for Peaceful Living</h2>
-  <ul>
-    <li>Talk to someone you trust about your feelings.</li>
-    <!-- ... -->
-  </ul>
-</div>
+<nav>
+  <a href="index.html" class="active" aria-current="page">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="#story">Story</a>
+  <a href="#counseling">Counseling</a>
+  <a href="#entertainment">Entertainment</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-<div id="entertainment" class="section">
-  <h2>Entertainment</h2>
-  <ul>
-    <li>Joke of the Day: ...</li>
-    <!-- ... -->
-  </ul>
-</div>
+<main class="container" role="main">
+  <section aria-label="Featured Blogs and Stories" class="grid">
+    <!-- Blog cards -->
+    <article class="card" tabindex="0">
+      <img src="images/1.png" alt="Unlock Your Potential: Personal Development Tips" />
+      <div class="card-content">
+        <div class="card-title">Unlock Your Potential: Personal Development Tips</div>
+        <a href="personal-development.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/2.png" alt="Mindful Living: Wellness and Inspiration for Happiness" />
+      <div class="card-content">
+        <div class="card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
+        <a href="mindful-living.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/3.png" alt="Creative Counseling: Strategies for a Peaceful Mind" />
+      <div class="card-content">
+        <div class="card-title">Creative Counseling: Strategies for a Peaceful Mind</div>
+        <a href="creative-counseling.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/4.png" alt="Unlock Your Potential: Personal Development Tips" />
+      <div class="card-content">
+        <div class="card-title">Unlock Your Potential: Personal Development Tips</div>
+        <a href="personal-development.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <!-- Story cards -->
+    <article class="card" tabindex="0" id="story">
+      <img src="images/2.png" alt="Mindful Living: Wellness and Inspiration for Happiness" />
+      <div class="card-content">
+        <div class="card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
+        <a href="mindful-living.html" class="read-more">Read Story</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/3.png" alt="Creative Counseling: Strategies for a Peaceful Mind" />
+      <div class="card-content">
+        <div class="card-title">Creative Counseling: Strategies for a Peaceful Mind</div>
+        <a href="creative-counseling.html" class="read-more">Read Story</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/4.png" alt="Inspirational Stories: Real Journeys, True Inspiration" />
+      <div class="card-content">
+        <div class="card-title">Inspirational Stories: Real Journeys, True Inspiration</div>
+        <a href="story.html" class="read-more">Read Story</a>
+      </div>
+    </article>
+  </section>
 
-<div id="about" class="section">
-  <h2>About KishorCreativeLab</h2>
-  <p>Hi, I'm NawalKishor ...</p>
-</div>
+  <section id="counseling" aria-labelledby="counseling-title">
+    <h2 id="counseling-title">Counseling for Peaceful Living</h2>
+    <ul>
+      <li>Talk to someone you trust about your feelings.</li>
+      <!-- Add more counseling tips here -->
+    </ul>
+  </section>
 
-<div id="contact" class="section">
-  <h2>Contact</h2>
-  <ul>
-    <li>Email: ...</li>
-    <li>GitHub: ...</li>
-  </ul>
-</div>
-  
-    
-    <div class="footer">
-    &copy; 2025 KishorCreativeLab · Bundi, Rajasthan, India &nbsp;|&nbsp;
-    <a href="mailto:kishorcreativelab@gmail.com">Contact</a>
-  </div>
+  <section id="entertainment" aria-labelledby="entertainment-title">
+    <h2 id="entertainment-title">Entertainment</h2>
+    <ul>
+      <li>Joke of the Day: Why don't scientists trust atoms? Because they make up everything!</li>
+      <!-- Add more entertainment items here -->
+    </ul>
+  </section>
+
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About KishorCreativeLab</h2>
+    <p>Hi, I'm NawalKishor, passionate about blogging and counseling to help you live a peaceful, inspired life.</p>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:kishorcreativelab@gmail.com">kishorcreativelab@gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener">kishorcreativelab</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 KishorCreativeLab · Bundi, Rajasthan, India &nbsp;|&nbsp;
+  <a href="mailto:kishorcreativelab@gmail.com">Contact</a>
+</footer>
 </body>
 </html>
