@@ -15,8 +15,18 @@
     padding: 0;
     font-family: 'Montserrat', Arial, sans-serif;
   }
+  @keyframes bgChange {
+    0%   { background-image: url('images/Background1.png'); }
+    25%  { background-image: url('images/Background2.png'); }
+    50%  { background-image: url('images/Background3.png'); }
+    75%  { background-image: url('images/Background4.png'); }
+    100% { background-image: url('images/Background1.png'); }
+  }
+
   body {
-    background: url('images/Background.png') no-repeat center center fixed;
+    animation: bgChange 240s infinite alternate;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     color: #243447;
     min-height: 100vh;
