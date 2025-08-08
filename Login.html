@@ -1,1 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login Example – KishorCreativeLab</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f5f7fa;
+    color: #333;
+  }
+  header {
+    background: #27408b;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  #user-controls {
+    margin-left: auto;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+  }
+  #user-controls button {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #user-controls button#logout-btn {
+    background: #ffcb05;
+    border: none;
+    color: #27408b;
+  }
+  /* Modal styles */
+  #login-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  #login-modal form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  #login-modal h2 {
+    margin-top: 0;
+    color: #27408b;
+    margin-bottom: 1rem;
+  }
+  #login-modal label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  #login-modal input[type="text"],
+  #login-modal input[type="password"] {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.4rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  #login-modal button[type="submit"],
+  #login-modal button#cancel-login {
+    width: 100%;
+    padding: 0.6rem 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  #login-modal button[type="submit"] {
+    background: #27408b;
+    color: #fff;
+  }
+  #login-modal button#cancel-login {
+    background: #ccc;
+    margin-top: 1rem;
+  }
+  #login-error {
+    color: red;
+    margin-top: 1rem;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>KishorCreativeLab</h1>
+  <div id="user-controls">
+    <button id="login-btn">Login</button>
+    <span id="user-greeting" style="display:none;"></span>
+    <button id="logout-btn" style="display:none;">Logout</button>
+  </div>
+</header>
+
+<!-- Modal Login Form -->
+<div id="login-modal">
+  <form id="login-form" novalidate>
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input id="username" name="username" type="text" required autocomplete="username" />
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="password" required autocomplete="current-password" />
+    <button type="submit">Login</button>
+    <button type="button" id="cancel-login">Cancel</button>
+    <p id="login-error"></p>
+  </form>
+</div>
+
+<script>
+  // Simulated user database
+  const users = [
+    { username: "user1", password: "password1", displayName: "User One" },
+    { username: "nawalkishor", password: "peace123", displayName: "Nawal Kishor" }
+  ];
+
+  const loginBtn = document.getElementById('login-btn');
+  const logoutBtn = document.getElementById('logout-btn');
+  const userGreeting = document.getElementById('user-greeting');
+  const loginModal = document.getElementById('login-modal');
+  const loginForm = document.getElementById('login-form');
+  const cancelBtn = document.getElementById('cancel-login');
+  const loginError = document.getElementById('login-error');
+
+  // Show login modal
+  loginBtn.addEventListener('click', () => {
+    loginError.style.display = 'none';
+    loginModal.style.display = 'flex';
+    loginForm.username.focus();
+  });
+
+  // Hide login modal
+  cancelBtn.addEventListener('click', () => {
+    loginForm.reset();
+    loginModal.style.display = 'none';
+    loginError.style.display = 'none';
+  });
+
+  // Handle form submit for login
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = loginForm.username.value.trim();
+    const password = loginForm.password.value;
+
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+      // Save logged-in user to localStorage
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+      updateUserUI();
+      loginForm.reset();
+      loginModal.style.display = 'none';
+      loginError.style.display = 'none';
+    } else {
+      loginError.textContent = "Invalid username or password.";
+      loginError.style.display = 'block';
+      loginForm.password.value = '';
+      loginForm.password.focus();
+    }
+  });
+
+  // Logout user
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    updateUserUI();
+  });
+
+  // Update UI based on login state
+  function updateUserUI() {
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      loginBtn.style.display = 'none';
+      userGreeting.style.display = 'inline';
+      userGreeting.textContent = `Welcome, ${user.displayName}`;
+      logoutBtn.style.display = 'inline';
+    } else {
+      loginBtn.style.display = 'inline-block';
+      userGreeting.style.display = 'none';
+      userGreeting.textContent = '';
+      logoutBtn.style.display = 'none';
+    }
+  }
+
+  // Initialize UI on page load
+  updateUserUI();
+
+  // Close modal on Escape key press
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && loginModal.style.display === 'flex') {
+      loginForm.reset();
+      loginModal.style.display = 'none';
+      loginError.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
 
