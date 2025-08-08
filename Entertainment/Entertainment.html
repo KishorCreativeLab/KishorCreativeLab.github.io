@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Entertainment Zone – KishorCreativeLab</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #f1f5fc;
+    min-height: 100vh;
+    margin: 0;
+    color: #243447;
+  }
+  header {
+    background: linear-gradient(90deg, #27408b, #337abb);
+    color: #fff;
+    padding: 1.2rem 0;
+    box-shadow: 0 4px 14px rgb(51 122 187 / 0.5);
+  }
+  nav ul {
+    display: flex; justify-content: center; list-style: none; padding: 0; margin: 0;
+    background: #141f34; border-bottom: 2px solid #ffcb05;
+  }
+  nav li {margin: 0;}
+  nav a {
+    color: #fff; padding: 1rem 1.4rem; display: block; font-weight: 600;
+    border-bottom: 3px solid transparent; text-decoration: none; letter-spacing: 1.2px;
+    transition: color 0.24s;
+  }
+  nav a.active, nav a:focus, nav a:hover {color: #ffcb05; border-bottom: 3px solid #ffcb05;}
+  main {max-width: 850px; margin: 2.4rem auto 0; padding: 2rem; background: #fff; border-radius: 16px; box-shadow: 0 8px 40px #aec3e7a5;}
+  h1, h2, h3 {color: #27408b;}
+  .ent-block {margin-bottom: 2.6rem;}
+  .joke-box {background: #eaf2fe; border-left: 6px solid #ffcb05; padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.08rem;}
+  #fact-of-day {margin: 0.7rem 0;}
+  #doodle-canvas {border: 2px dashed #337abb; border-radius: 6px; background: #f6fbf5;}
+  .poll-options button {margin: 0.5rem; padding: 0.35rem 1.1rem; font-size: 1rem; border-radius: 8px;}
+  #virtual-pet {margin-top: 1.2rem;}
+  /* Gamified badge */
+  .badge {display: inline-block; padding: 0.2rem 0.7rem; background: #ffd500; color: #243447; border-radius: 10px; font-weight: bold; margin-left: 0.7rem;}
+  /* Fun weather */
+  .confetti {pointer-events: none; position: fixed; width: 100vw; height: 100vh; z-index: 10000; top: 0; left: 0;}
+</style>
+</head>
+<body>
+<header>
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1rem;">
+    <img src="images/Logo2.png" alt="KishorCreativeLab logo" width="60" height="60" style="border-radius:12px;background:#fff;padding:3px;" />
+    <div>
+      <h1 style="margin:0;">Entertainment Zone</h1>
+      <span style="font-size:1.15rem;color:#ffe066;">Where Mindfulness Meets Fun!</span>
+    </div>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="story.html">Story</a></li>
+    <li><a href="entertainment.html" class="active" aria-current="page">Entertainment</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+<main>
+  <section class="ent-block" aria-labelledby="joke-title">
+    <h2 id="joke-title">😂 Joke of the Day <span class="badge" id="badge-joke" style="display:none;"></span></h2>
+    <div class="joke-box" id="joke-of-day"></div>
+    <button onclick="randomJoke()">Another joke</button>
+  </section>
+  <section class="ent-block">
+    <h2>🎨 Interactive Doodle Pad</h2>
+    <canvas id="doodle-canvas" width="380" height="150"></canvas>
+    <br />
+    <button onclick="clearDoodle()">Clear</button>
+  </section>
+  <section class="ent-block">
+    <h2>🎵 Background Music <button onclick="toggleMusic()" id="music-btn">Pause</button></h2>
+    <audio id="bg-music" src="Music/Tranquil Reflections.mp3" loop autoplay></audio>
+  </section>
+  <section class="ent-block">
+    <h2>🎮 Simple Tic-Tac-Toe Game</h2>
+    <div id="game-board" style="display:grid;grid-template-columns:repeat(3,60px);width:186px;gap:6px;margin:15px 0;"></div>
+    <div id="game-status"></div>
+    <button onclick="resetGame()">Restart</button>
+  </section>
+  <section class="ent-block">
+    <h2>🧑‍🔬 Fact of the Day</h2>
+    <div id="fact-of-day"></div>
+    <button onclick="randomFact()">New fact</button>
+  </section>
+  <section class="ent-block">
+    <h2>📊 Quick Poll</h2>
+    <div>Which activity helps you relax?</div>
+    <div class="poll-options">
+      <button onclick="poll('Reading')">Reading</button>
+      <button onclick="poll('Music')">Music</button>
+      <button onclick="poll('Walking')">Walking</button>
+      <button onclick="poll('Meditation')">Meditation</button>
+    </div>
+    <div id="poll-result"></div>
+  </section>
+  <section class="ent-block">
+    <h2>🎈 Confetti Button</h2>
+    <button onclick="showConfetti()">Celebrate Now!</button>
+    <canvas class="confetti" id="confetti-canvas" style="display:none;"></canvas>
+  </section>
+  <section class="ent-block">
+    <h2>🐾 Virtual Pet Companion</h2>
+    <div id="virtual-pet">
+      <img src="images/virtual-pet.gif" alt="Virtual pet" width="80" /><br>
+      <button onclick="petHug()">Give Hug ❤️</button> <span id="pet-message"></span>
+    </div>
+  </section>
+  <section class="ent-block">
+    <h2>🌟 Try the Konami Code!</h2>
+    <p>Type the famous Konami code (↑ ↑ ↓ ↓ ← → ← → B A) and see a surprise!</p>
+    <div id="konami-message"></div>
+  </section>
+</main>
+<footer style="text-align:center;background:linear-gradient(90deg, #27408b, #337abb);color:#fff;padding:1.2rem 0;margin-top:2rem;font-size:1rem;">
+  &copy; 2025 KishorCreativeLab · <a href="mailto:kishorcreativelab@gmail.com" style="color:#ffe066;">Contact</a>
+</footer>
+<script>
+// 1. Joke of the Day & Gamification
+const jokes = [
+  "Why don’t scientists trust atoms? Because they make up everything!",
+  "Why did the developer go broke? Because he used up all his cache.",
+  "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+  "What do you call a factory that makes good products? A satisfactory.",
+  "Why do JavaScript developers wear glasses? Because they don’t see sharp."
+];
+function randomJoke() {
+  const idx = Math.floor(Math.random()*jokes.length);
+  document.getElementById('joke-of-day').innerText = jokes[idx];
+  document.getElementById('badge-joke').style.display = idx === 1 ? 'inline-block' : 'none';
+}
+window.onload = randomJoke;
+
+// 2. Doodle pad
+const canvas = document.getElementById('doodle-canvas');
+const ctx = canvas.getContext('2d');
+let painting = false;
+canvas.onmousedown = () => { painting = true; };
+canvas.onmouseup = () => { painting = false; ctx.beginPath(); };
+canvas.onmousemove = e => {
+  if (!painting) return;
+  ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.strokeStyle = '#337abb';
+  ctx.lineTo(e.offsetX, e.offsetY); ctx.stroke(); ctx.beginPath();
+  ctx.moveTo(e.offsetX, e.offsetY);
+};
+function clearDoodle() { ctx.clearRect(0,0,canvas.width,canvas.height); }
+
+// 3. Background music toggle
+function toggleMusic() {
+  const music = document.getElementById('bg-music');
+  const btn = document.getElementById('music-btn');
+  if (music.paused) { music.play(); btn.textContent = 'Pause'; }
+  else { music.pause(); btn.textContent = 'Play'; }
+}
+
+// 4. Simple Tic Tac Toe
+const boardElem = document.getElementById('game-board');
+let board, xIsNext, finished;
+function drawBoard() {
+  boardElem.innerHTML = '';
+  for(let i=0;i<9;i++) {
+    const cell = document.createElement('div');
+    cell.style = "width:60px;height:60px;font-size:2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#eaf2fe;";
+    cell.innerText = board[i];
+    if (!board[i] && !finished) cell.onclick = ()=>move(i);
+    boardElem.appendChild(cell);
+  }
+}
+function resetGame() {board=Array(9).fill('');xIsNext=true;finished=false;drawBoard();document.getElementById('game-status').innerText='';}
+function move(i) {
+  if (board[i]||finished) return;
+  board[i]=xIsNext?'X':'O';xIsNext=!xIsNext;drawBoard();
+  const win = (a,b,c)=>board[a]&&board[a]==board[b]&&board[a]==board[c];
+  if ([0,3,6].some(i=>win(i,i+1,i+2))||[0,1,2].some(i=>win(i,i+3,i+6))||win(0,4,8)||win(2,4,6)){
+    document.getElementById('game-status').innerText = `${board[i]} wins!`; finished=true;
+  } else if (board.every(x=>x)) {document.getElementById('game-status').innerText='Draw!'; finished=true;}
+}
+resetGame();
+
+// 5. Fact of the Day
+const facts = [
+  "Honey never spoils. Archaeologists have found edible honey in ancient tombs!",
+  "Cows have best friends and can become stressed if separated.",
+  "Bananas are berries, but strawberries are not.",
+  "Octopuses have three hearts and blue blood.",
+  "Laughter increases blood flow and boosts immune response."
+];
+function randomFact() {
+  document.getElementById('fact-of-day').innerText = facts[Math.floor(Math.random()*facts.length)];
+}
+randomFact();
+
+// 6. Polls
+let pollVotes = {Reading:0,Music:0,Walking:0,Meditation:0};
+function poll(choice) {
+  pollVotes[choice]++;
+  let total = Object.values(pollVotes).reduce((a,b)=>a+b,0);
+  let str = Object.entries(pollVotes).map(([opt,v])=>`${opt}: ${(v/total*100||0).toFixed(0)}%`).join(' | ');
+  document.getElementById('poll-result').innerText = `Results: ${str}`;
+}
+
+// 7. Confetti
+function showConfetti() {
+  const confetti = document.getElementById('confetti-canvas');
+  confetti.width=window.innerWidth; confetti.height=window.innerHeight;
+  confetti.style.display='block';
+  const ctx = confetti.getContext('2d');
+  const colors = ['#ffd500', '#337abb', '#87e6c5', '#a674f2', '#ffe066'];
+  let pieces = Array.from({length:100},()=>({x:Math.random()*confetti.width,y:Math.random()*confetti.height,dy:2+Math.random()*2,color:colors[Math.floor(Math.random()*colors.length)],size:8+Math.random()*8}));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,confetti.width,confetti.height);
+    for(let p of pieces){
+      ctx.fillStyle=p.color;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y+frame*p.dy/4,p.size,0,2*Math.PI);
+      ctx.fill();
+    }
+    frame++; if (frame<70) requestAnimationFrame(draw); else confetti.style.display='none';
+  }
+  draw();
+}
+
+// 8. Virtual Pet
+function petHug() {
+  const msg = ["Your pet smiles 😊","It purrs softly 🐾","It feels loved! 💖"];
+  document.getElementById('pet-message').innerText = msg[Math.floor(Math.random()*msg.length)];
+  setTimeout(()=>{document.getElementById('pet-message').innerText='';},2000);
+}
+
+// 9. Konami Code Easter Egg
+let konami = [];
+const konamiSeq = [38,38,40,40,37,39,37,39,66,65];
+document.body.addEventListener('keydown',evt=>{
+  konami.push(evt.keyCode);
+  if(konami.length>10) konami=konami.slice(-10);
+  if (JSON.stringify(konami)===JSON.stringify(konamiSeq)) {
+    document.getElementById('konami-message').innerHTML='🎉 You found the Easter Egg! Have a mindful, magical day!';
+    showConfetti();
+  }
+});
+</script>
+</body>
+</html>
 
