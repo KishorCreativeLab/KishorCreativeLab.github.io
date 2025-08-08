@@ -4,19 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>KishorCreativeLab – Blog, Fun & Counseling</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6811174574525564"
+     crossorigin="anonymous"></script>
 <style>
-  :root {
-    --color-primary-dark: #27408b;
-    --color-primary: #337abb;
-    --color-primary-light: #ffcb05;
-    --color-text-dark: #243447;
-    --color-text-muted: #345678;
-    --color-bg-light: #ffffffec;
-    --color-bg-donate: #fff8e1;
-  }
-
   /* Reset */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -26,8 +17,6 @@
     padding: 0;
     font-family: 'Montserrat', Arial, sans-serif;
   }
-
-  /* Background animation */
   @keyframes bgChange {
     0%   { background-image: url('images/Background1.png'); }
     25%  { background-image: url('images/Background2.jpg'); }
@@ -41,40 +30,31 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    color: var(--color-text-dark);
+    color: #243447;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
-
   a {
-    color: var(--color-primary);
+    color: #337abb;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   a:hover, a:focus {
-    color: var(--color-primary-light);
+    color: #ffcb05;
     outline: none;
   }
-  a:focus-visible {
-    outline-offset: 3px;
-    outline-color: var(--color-primary-light);
-  }
-
+  
   /* Container */
   .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    position: relative;
   }
-
+  
   /* Header */
   header {
-    background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+    background: linear-gradient(90deg, #27408b, #337abb);
     color: #fff;
     padding: 1.5rem 0;
     box-shadow: 0 4px 14px rgb(51 122 187 / 0.5);
@@ -82,68 +62,36 @@
   header .branding {
     display: flex;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     gap: 1rem;
-    width: 100%;
   }
   header .branding img {
     width: 90px;
-    height: 90px;
     border-radius: 15px;
     background: #fff;
     padding: 6px;
     box-shadow: 0 5px 16px rgba(35,44,60,0.12);
-    object-fit: contain;
+  }
+  header .branding div {
+    line-height: 1.1;
   }
   header h1 {
     font-weight: 700;
     font-size: 2.4rem;
     letter-spacing: 1.2px;
-    line-height: 1.1;
+    margin-bottom: 0.1rem;
   }
   header p {
     font-weight: 500;
     font-size: 1.2rem;
-    color: var(--color-primary-light);
+    color: #ffd500;
   }
-  #user-controls {
-    margin-left: auto;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  #user-controls button {
-    background: transparent;
-    border: 1.5px solid #fff;
-    color: #fff;
-    padding: 0.4rem 1rem;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 1rem;
-    white-space: nowrap;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  }
-  #user-controls button#logout-btn {
-    background: var(--color-primary-light);
-    border: none;
-    color: var(--color-primary-dark);
-  }
-  #user-controls button:hover {
-    background-color: var(--color-primary-light);
-    color: var(--color-primary-dark);
-    border-color: var(--color-primary-light);
-  }
-  #user-greeting {
-    color: #fff;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
+  
   /* Navigation */
   nav {
     background: #141f34;
-    box-shadow: inset 0 -3px 0 0 var(--color-primary-light);
+    box-shadow: inset 0 -2px 0 0 #ffcb05;
   }
   nav ul {
     list-style: none;
@@ -158,68 +106,67 @@
   nav a {
     color: #fff;
     font-weight: 600;
-    font-size: 1.1rem;
-    padding: 1.1rem 1.5rem;
+    font-size: 1.05rem;
+    padding: 1rem 1.25rem;
     display: block;
     letter-spacing: 1.4px;
     border-bottom: 3px solid transparent;
-    transition: color 0.3s ease, border-color 0.3s ease;
   }
   nav a.active,
   nav a:hover,
   nav a:focus {
-    color: var(--color-primary-light);
-    border-bottom-color: var(--color-primary-light);
+    color: #ffcb05;
+    border-bottom-color: #ffcb05;
     outline: none;
   }
   nav a:focus-visible {
     outline-offset: 3px;
-    outline-color: var(--color-primary-light);
+    outline-color: #ffcb05;
   }
-
-  /* Jumbotron */
+  
+  /* Hero / Jumbotron */
   .jumbotron {
-    background: linear-gradient(90deg, #1b2c57, var(--color-primary-dark));
+    background: linear-gradient(90deg, #1b2c57, #27408b);
     color: #fff;
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
     text-align: center;
     box-shadow: 0 6px 20px rgb(39 64 139 / 0.75);
   }
   .jumbotron h2 {
     font-weight: 700;
-    font-size: 3rem;
+    font-size: 2.8rem;
     max-width: 900px;
-    margin: 0 auto 0.75em;
+    margin: 0 auto 0.6em;
   }
   .jumbotron p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     max-width: 700px;
     margin: 0 auto;
     color: #ffe066;
   }
-
+  
   /* Cards Grid */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 3rem 0;
+    padding: 2rem 0;
     max-width: 1200px;
     margin: 0 auto;
   }
   article.card {
     background: #fff;
     border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(158,195,226,0.25);
+    box-shadow: 0 4px 18px rgb(158 195 226 / 0.25);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
   }
   article.card:hover,
   article.card:focus-within {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 32px rgba(158,195,226,0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 32px rgb(158 195 226 / 0.4);
   }
   article.card img {
     width: 100%;
@@ -229,206 +176,304 @@
     flex-shrink: 0;
   }
   article.card .card-content {
-    padding: 1rem 1.5rem 1.5rem;
+    padding: 1rem 1.25rem 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
-  .card-title {
+  article.card .card-title {
     font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--color-primary-dark);
-    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    color: #27408b;
+    margin-bottom: 0.8rem;
     flex-grow: 1;
   }
-  a.read-more {
+  article.card a.read-more {
     align-self: flex-start;
     font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--color-primary-light);
+    font-size: 0.9rem;
+    color: #ffcb05;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    transition: text-decoration 0.3s ease;
   }
-  a.read-more:hover,
-  a.read-more:focus {
+  article.card a.read-more:hover,
+  article.card a.read-more:focus {
     text-decoration: underline;
     outline: none;
   }
-
+  
   /* Sections */
   section {
-    background: var(--color-bg-light);
+    background: #ffffffec;
     border-radius: 14px;
     box-shadow: 0 6px 28px #9fc3e2aa;
-    padding: 3rem 2.5rem 2.5rem;
+    padding: 2.5rem 2rem 2rem;
     max-width: 650px;
     margin: 3rem auto;
   }
   section h2 {
-    color: var(--color-primary-dark);
+    color: #27408b;
     border-bottom: 3px solid #eaeaea;
     padding-bottom: 0.3rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.9rem;
   }
   section ul {
     list-style-type: disc;
-    padding-left: 1.75rem;
-    color: var(--color-text-dark);
-    font-size: 1.15rem;
+    padding-left: 1.5rem;
+    color: #243447;
+    font-size: 1.1rem;
     line-height: 1.6;
   }
   section p {
-    font-size: 1.15rem;
-    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    color: #345678;
     line-height: 1.6;
   }
 
-  /* Donation Section */
-  #donate {
-    background-color: var(--color-bg-donate);
-    border-radius: 14px;
-    box-shadow: 0 8px 32px rgba(255, 203, 5, 0.3);
-    text-align: center;
-    color: var(--color-primary-dark);
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding: 3rem 2.5rem 2.5rem;
-    max-width: 650px;
-    margin: 0 auto 3rem;
-  }
-  #donate h2 {
-    margin-bottom: 1.25rem;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #ffb300;
-    text-shadow: 1px 1px 3px rgba(255, 203, 5, 0.6);
-  }
+  /* Donation Link */
   .donate-link {
-    display: inline-block;
-    background-color: var(--color-primary-light);
-    color: var(--color-primary-dark);
-    padding: 1rem 2.5rem;
-    border-radius: 14px;
+    background-color: #ffcb05;
+    color: #27408b;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
     font-weight: 700;
-    font-size: 1.15rem;
     text-decoration: none;
-    box-shadow: 0 4px 14px rgba(255, 203, 5, 0.5);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    transition: background-color 0.3s ease;
   }
-  .donate-link:hover, .donate-link:focus {
+  .donate-link:hover,
+  .donate-link:focus {
     background-color: #ffd500;
-    box-shadow: 0 6px 18px rgba(255, 213, 80, 0.7);
     outline: none;
   }
-
+  
   /* Footer */
   footer {
-    background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+    background: linear-gradient(90deg, #27408b, #337abb);
     color: #fff;
     padding: 2rem 1rem;
     text-align: center;
     font-size: 1rem;
     letter-spacing: 0.4px;
-    box-shadow: 0 -3px 14px rgba(51, 122, 187, 0.5);
+    box-shadow: 0 -3px 14px rgb(51 122 187 / 0.5);
   }
   footer a {
     color: #ffe066;
     text-decoration: underline;
-    transition: color 0.3s ease;
   }
   footer a:hover,
   footer a:focus {
     color: #fff;
     outline: none;
   }
+  
+  /* Social Icons */
   .social-icons {
     margin-top: 1rem;
     display: flex;
     justify-content: center;
-    gap: 1.6rem;
+    gap: 1.4rem;
   }
   .social-icons a {
     color: #ffe066;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+    font-size: 1.3rem;
   }
   .social-icons a:hover,
   .social-icons a:focus {
     color: #fff;
-    outline: none;
   }
-
+  
   /* Responsive */
   @media (max-width: 600px) {
     header .branding {
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
     header h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
     nav a {
-      padding: 0.8rem 1rem;
+      padding: 0.75rem 0.75rem;
       font-size: 1rem;
     }
     .jumbotron h2 {
-      font-size: 2.1rem;
+      font-size: 1.9rem;
     }
     article.card img {
       height: 140px;
     }
     section {
       margin: 2rem 1rem;
-      padding: 2rem 1.5rem 1.5rem;
-    }
-    #donate {
-      font-size: 1.1rem;
-      padding: 2.5rem 1.5rem 2rem;
+      padding: 1.8rem 1.5rem 1.5rem;
     }
   }
+</style>
+</head>
+<body>
+<audio autoplay loop controls>
+  <source src="Music/Tranquil Reflections.mp3" type="audio/mpeg" />
+  <source src="audio/calm-melody.ogg" type="audio/ogg" />
+  Your browser does not support the audio element.
+</audio>
 
-  /* Modal styles */
-  #login-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  #login-modal[aria-hidden="false"] {
-    display: flex;
-  }
-  #login-modal form {
-    background: #fff;
-    padding: 2.5rem 2rem;
-    border-radius: 14px;
-    width: 340px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.25);
-    display: flex;
-    flex-direction: column;
-  }
-  #login-modal h2 {
-    margin-top: 0;
-    color: var(--color-primary-dark);
-    margin-bottom: 1.25rem;
-    text-align: center;
-    font-size: 1.8rem;
-  }
-  #login-modal label {
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-  #login-modal input[type="text"],
-  #login-modal input[type="password"] {
-    width: 100%;
-    margin-bottom: 1.2rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1.5px solid #ccc;
-    border-radius: 8px;
-    transition: border
+<header>
+  <div class="branding container">
+    <img src="images/Logo2.png" alt="Kishor Creative Lab Logo" width="90" height="90" />
+    <div>
+      <h1>KishorCreativeLab</h1>
+      <p>Blogging | Entertainment | Counseling for a Peaceful Life</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#counseling">Counseling</a></li>
+    <li><a href="#entertainment">Entertainment</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="jumbotron">
+  <h2>Welcome to KishorCreativeLab</h2>
+  <p>Explore Personal Development, Mindful Living, Counseling Strategies and So Much More!</p>
+</section>
+
+<main class="container" role="main">
+
+  <section aria-label="Featured Blogs and Stories" class="grid" id="story">
+    <!-- Blog Cards -->
+    <article class="card" tabindex="0">
+      <img src="images/1.png" alt="Unlock Your Potential: Personal Development Tips" />
+      <div class="card-content">
+        <div class="card-title">Unlock Your Potential: Personal Development Tips</div>
+        <a href="blog/Unlock_Your_Potential.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/2.png" alt="Mindful Living: Wellness and Inspiration for Happiness" />
+      <div class="card-content">
+        <div class="card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
+        <a href="blog/Mindful_Living.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/7.jpg" alt="Creative Counseling: Strategies for a Peaceful Mind" />
+      <div class="card-content">
+        <div class="card-title">Creative Counseling: Strategies for a Peaceful Mind</div>
+        <a href="blog/Creative_Counseling.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/8.jpg" alt="Gentle Beginnings: My Recipe for a Peaceful Start" />
+      <div class="card-content">
+        <div class="card-title">Gentle Beginnings: My Recipe for a Peaceful Start</div>
+        <a href="blog/Gentle_Beginnings.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/9.jpg" alt="The Art of Slow Mornings: How I Create Space for Peace Each Day" />
+      <div class="card-content">
+        <div class="card-title">The Art of Slow Mornings: How I Create Space for Peace Each Day</div>
+        <a href="blog/The_Art_of_Slow_Mornings.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/10.jpg" alt="The Calm Within: How I Learned to Find Peace in Everyday Moments" />
+      <div class="card-content">
+        <div class="card-title">The Calm Within: How I Learned to Find Peace in Everyday Moments</div>
+        <a href="blog/The_Calm_Within.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/11.jpg" alt="Awakening to Joy: Small Practices That Brighten My Every Day" />
+      <div class="card-content">
+        <div class="card-title">Awakening to Joy: Small Practices That Brighten My Every Day</div>
+        <a href="blog/Awakening_to_Joy.html" class="read-more">Read Blog</a>
+      </div>
+    </article>
+    <!-- Story Cards -->
+    <article class="card" tabindex="0">
+      <img src="images/12.jpg" alt="Mindful Living: Wellness and Inspiration for Happiness" />
+      <div class="card-content">
+        <div class="card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
+        <a href="mindful-living.html" class="read-more">Read Story</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/3.png" alt="Creative Counseling: Strategies for a Peaceful Mind" />
+      <div class="card-content">
+        <div class="card-title">Creative Counseling: Strategies for a Peaceful Mind</div>
+        <a href="creative-counseling.html" class="read-more">Read Story</a>
+      </div>
+    </article>
+    <article class="card" tabindex="0">
+      <img src="images/4.png" alt="Inspirational Stories: Real Journeys, True Inspiration" />
+      <div class="card-content">
+        <div class="card-title">Inspirational Stories: Real Journeys, True Inspiration</div>
+        <a href="story.html" class="read-more">Read Story</a>
+      </div>
+    </article>
+  </section>
+
+  <section id="counseling" aria-labelledby="counseling-title">
+    <h2 id="counseling-title">Counseling for Peaceful Living</h2>
+    <ul>
+      <li>Talk to someone you trust about your feelings.</li>
+      <li>Take short breaks every hour to stretch and breathe.</li>
+      <li>Set one main priority for the day instead of juggling many.</li>
+      <li>Remember: “Peace comes from within. Do not seek it without.” – Buddha</li>
+    </ul>
+  </section>
+
+  <section id="entertainment" aria-labelledby="entertainment-title">
+    <h2 id="entertainment-title">Entertainment</h2>
+    <ul>
+      <li>Joke of the Day: Why don't scientists trust atoms? Because they make up everything!</li>
+      <li><strong>Song of the Week:</strong> Aashayein from Iqbal</li>
+      <li><strong>Recommended Comedy:</strong> Chupke Chupke, PK, Munna Bhai M.B.B.S.</li>
+      <li><strong>Quick Poll:</strong> What’s your favorite way to relax? (Reading / Music / Walking / Meditation)</li>
+    </ul>
+  </section>
+
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About KishorCreativeLab</h2>
+    <p>Hi, I'm NawalKishor, passionate about blogging and counseling to help you live a peaceful, inspired life.</p>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:kishorcreativelab@gmail.com">kishorcreativelab@gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener noreferrer">kishorcreativelab</a></li>
+    </ul>
+  </section>
+
+  <!-- Donation Section Added Below -->
+  <section id="donate" aria-labelledby="donate-title">
+    <h2 id="donate-title">Support KishorCreativeLab</h2>
+    <p>If you enjoy the content and want to support my work, please consider making a donation via PayPal.</p>
+    <p>
+      <a href="https://paypal.me/rnawal7742" target="_blank" rel="noopener noreferrer" class="donate-link" aria-label="Donate via PayPal">Donate via PayPal</a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 KishorCreativeLab · Bundi, Rajasthan, India &nbsp;|&nbsp;
+  <a href="mailto:kishorcreativelab@gmail.com">Contact</a>
+  <div class="social-icons" aria-label="Social Media Links">
+    <a href="https://twitter.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Twitter">&#x1F426;</a>
+    <a href="https://www.facebook.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Facebook">&#x1F464;</a>
+    <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">&#x1F4BB;</a>
+  </div>
+</footer>
+
+</body>
+</html>
