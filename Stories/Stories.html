@@ -5,8 +5,260 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Stories – KishorCreativeLab</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-<!-- (Keep your global styles & background animation exactly the same as in index.html) -->
-<link rel="stylesheet" href="styles.css"><!-- if styles.css is used instead of <style> -->
+<style>
+  /* Reset and base styles */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #243447;
+    background: #f9fafc;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  a {
+    color: #337abb;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    color: #ffcb05;
+    outline: none;
+  }
+
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #27408b, #337abb);
+    color: #fff;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 14px rgba(51, 122, 187, 0.5);
+  }
+  header .branding {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  header .branding img {
+    width: 90px;
+    border-radius: 15px;
+    background: #fff;
+    padding: 6px;
+    box-shadow: 0 5px 16px rgba(35,44,60,0.12);
+  }
+  header .branding div {
+    line-height: 1.1;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.1rem;
+  }
+  header p {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #ffd500;
+  }
+
+  /* Navigation */
+  nav {
+    background: #141f34;
+    box-shadow: inset 0 -2px 0 0 #ffcb05;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  nav li {
+    position: relative;
+  }
+  nav a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 1rem 1.25rem;
+    display: block;
+    letter-spacing: 1.4px;
+    border-bottom: 3px solid transparent;
+  }
+  nav a.active,
+  nav a:hover,
+  nav a:focus {
+    color: #ffcb05;
+    border-bottom-color: #ffcb05;
+    outline: none;
+  }
+  nav a:focus-visible {
+    outline-offset: 3px;
+    outline-color: #ffcb05;
+  }
+  
+  /* Jumbotron */
+  .jumbotron {
+    background: linear-gradient(90deg, #1b2c57, #27408b);
+    color: #fff;
+    padding: 3rem 1rem;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(39, 64, 139, 0.75);
+    margin-bottom: 2rem;
+  }
+  .jumbotron h2 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    max-width: 900px;
+    margin: 0 auto 0.6em auto;
+  }
+  .jumbotron p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #ffe066;
+  }
+
+  /* Stories Grid */
+  #stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover, .card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+  }
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+    flex-shrink: 0;
+  }
+  .card-content {
+    padding: 1.25rem 1rem 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .card-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #27408b;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+  .read-more {
+    align-self: flex-start;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ffcb05;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+  }
+  .read-more:hover, .read-more:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  /* About Section */
+  #about {
+    max-width: 650px;
+    margin: 0 auto 3rem auto;
+    background: #ffffffec;
+    border-radius: 14px;
+    box-shadow: 0 6px 28px #9fc3e2aa;
+    padding: 2.5rem 2rem 2rem;
+  }
+  #about h2 {
+    color: #27408b;
+    border-bottom: 3px solid #eaeaea;
+    padding-bottom: 0.3rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    font-size: 1.9rem;
+  }
+  #about p {
+    font-size: 1.1rem;
+    color: #345678;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background: linear-gradient(90deg, #27408b, #337abb);
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+    box-shadow: 0 -3px 14px rgba(51, 122, 187, 0.5);
+  }
+  footer a {
+    color: #ffe066;
+    text-decoration: underline;
+  }
+  footer a:hover, footer a:focus {
+    color: #fff;
+    outline: none;
+  }
+  .social-icons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+  }
+  .social-icons a {
+    color: #ffe066;
+    font-size: 1.3rem;
+  }
+  .social-icons a:hover, .social-icons a:focus {
+    color: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .card img {
+      height: 160px;
+    }
+    header h1 {
+      font-size: 1.8rem;
+    }
+    nav a {
+      padding: 0.75rem 0.75rem;
+      font-size: 1rem;
+    }
+    .jumbotron h2 {
+      font-size: 1.9rem;
+    }
+    #about {
+      margin: 2rem 1rem 3rem 1rem;
+      padding: 1.8rem 1.5rem 1.5rem;
+    }
+  }
+</style>
 </head>
 <body>
 <audio autoplay loop controls>
@@ -29,7 +281,7 @@
   <ul>
     <li><a href="../../index.html">Home</a></li>
     <li><a href="../../blog.html">Blog</a></li>
-    <li><a href="Stories/Stories.html" class="active" aria-current="page">Story</a></li>
+    <li><a href="Stories.html" class="active" aria-current="page">Story</a></li>
     <li><a href="../../counseling">Counseling</a></li>
     <li><a href="../../Entertainment.html">Entertainment</a></li>
     <li><a href="#about">About</a></li>
@@ -45,40 +297,58 @@
 <main class="container" role="main">
   <section aria-label="Stories" class="grid" id="stories-grid">
 
-    <!-- Paste your Story Cards here! -->
+    <!-- Story Card 1 -->
     <article class="card" tabindex="0">
       <img src="images/12.jpg" alt="Mindful Living: Wellness and Inspiration for Happiness" />
       <div class="card-content">
-        <div class="card-title">Mindful Living: Wellness and Inspiration for Happiness</div>
-        <a href="mindful-living.html" class="read-more">Read Story</a>
+        <h3 class="card-title">Mindful Living: Wellness and Inspiration for Happiness</h3>
+        <a href="mindful-living.html" class="read-more" aria-label="Read story Mindful Living: Wellness and Inspiration for Happiness">Read Story</a>
       </div>
     </article>
+
+    <!-- Story Card 2 -->
     <article class="card" tabindex="0">
       <img src="images/3.png" alt="Creative Counseling: Strategies for a Peaceful Mind" />
       <div class="card-content">
-        <div class="card-title">Creative Counseling: Strategies for a Peaceful Mind</div>
-        <a href="creative-counseling.html" class="read-more">Read Story</a>
+        <h3 class="card-title">Creative Counseling: Strategies for a Peaceful Mind</h3>
+        <a href="creative-counseling.html" class="read-more" aria-label="Read story Creative Counseling: Strategies for a Peaceful Mind">Read Story</a>
       </div>
     </article>
+
+    <!-- Story Card 3 -->
     <article class="card" tabindex="0">
       <img src="images/4.png" alt="Inspirational Stories: Real Journeys, True Inspiration" />
       <div class="card-content">
-        <div class="card-title">Inspirational Stories: Real Journeys, True Inspiration</div>
-        <a href="story.html" class="read-more">Read Story</a>
+        <h3 class="card-title">Inspirational Stories: Real Journeys, True Inspiration</h3>
+        <a href="story.html" class="read-more" aria-label="Read story Inspirational Stories: Real Journeys, True Inspiration">Read Story</a>
       </div>
     </article>
-    <!-- Add more story cards as needed -->
+
+    <!-- Add more cards below as desired -->
+    <article class="card" tabindex="0">
+      <img src="images/13.jpg" alt="Journey to Mindfulness: A Personal Account" />
+      <div class="card-content">
+        <h3 class="card-title">Journey to Mindfulness: A Personal Account</h3>
+        <a href="journey-to-mindfulness.html" class="read-more">Read Story</a>
+      </div>
+    </article>
+
+    <article class="card" tabindex="0">
+      <img src="images/14.jpg" alt="Healing Through Reflection and Meditation" />
+      <div class="card-content">
+        <h3 class="card-title">Healing Through Reflection and Meditation</h3>
+        <a href="healing-through-reflection.html" class="read-more">Read Story</a>
+      </div>
+    </article>
 
   </section>
 
-  <!-- Added About Section for Stories -->
-  <section id="about" aria-labelledby="about-title" style="max-width: 650px; margin: 3rem auto; background: #ffffffec; border-radius: 14px; box-shadow: 0 6px 28px #9fc3e2aa; padding: 2.5rem 2rem 2rem;">
-    <h2 id="about-title" style="color:#27408b; border-bottom:3px solid #eaeaea; padding-bottom:0.3rem; font-weight:700; margin-bottom:1.25rem; font-size:1.9rem;">About Our Stories</h2>
-    <p style="font-size:1.1rem; color:#345678; line-height:1.6;">
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About Our Stories</h2>
+    <p>
       At KishorCreativeLab, our stories section is a place to share inspiring personal journeys, practical wisdom, and heartfelt reflections. These stories aim to uplift, encourage mindfulness, and provide meaningful perspectives for better living. Whether it’s tales of growth, healing, or everyday moments of insight, these stories are crafted to connect and resonate deeply with our community.
     </p>
   </section>
-
 </main>
 
 <footer>
