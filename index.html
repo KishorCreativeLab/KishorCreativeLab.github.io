@@ -24,7 +24,6 @@
     75%  { background-image: url('images/Background4.jpg'); }
     100% { background-image: url('images/Background1.png'); }
   }
-
   body {
     animation: bgChange 240s infinite alternate;
     background-repeat: no-repeat;
@@ -44,27 +43,22 @@
     color: #ffcb05;
     outline: none;
   }
-  
   /* Container */
   .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
   }
-  
   /* Header */
   header {
     background: linear-gradient(90deg, #27408b, #337abb);
     color: #fff;
     padding: 1.5rem 0;
     box-shadow: 0 4px 14px rgb(51 122 187 / 0.5);
-  }
-  header .branding {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 1rem;
   }
   header .branding img {
     width: 90px;
@@ -87,7 +81,35 @@
     font-size: 1.2rem;
     color: #ffd500;
   }
-  
+  /* Added user controls container - aligned right */
+  #user-controls {
+    margin-left: auto;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  #user-controls button {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+  #user-controls button#logout-btn {
+    background: #ffcb05;
+    border: none;
+    color: #27408b;
+  }
+  #user-greeting {
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+  }
   /* Navigation */
   nav {
     background: #141f34;
@@ -123,7 +145,6 @@
     outline-offset: 3px;
     outline-color: #ffcb05;
   }
-  
   /* Hero / Jumbotron */
   .jumbotron {
     background: linear-gradient(90deg, #1b2c57, #27408b);
@@ -144,7 +165,6 @@
     margin: 0 auto;
     color: #ffe066;
   }
-  
   /* Cards Grid */
   .grid {
     display: grid;
@@ -200,7 +220,6 @@
     text-decoration: underline;
     outline: none;
   }
-  
   /* Sections */
   section {
     background: #ffffffec;
@@ -230,7 +249,6 @@
     color: #345678;
     line-height: 1.6;
   }
-
   /* Donation Link */
   .donate-link {
     background-color: #ffcb05;
@@ -247,7 +265,6 @@
     background-color: #ffd500;
     outline: none;
   }
-  
   /* Footer */
   footer {
     background: linear-gradient(90deg, #27408b, #337abb);
@@ -267,7 +284,6 @@
     color: #fff;
     outline: none;
   }
-  
   /* Social Icons */
   .social-icons {
     margin-top: 1rem;
@@ -283,10 +299,9 @@
   .social-icons a:focus {
     color: #fff;
   }
-  
   /* Responsive */
   @media (max-width: 600px) {
-    header .branding {
+    header .container {
       flex-direction: column;
       gap: 0.5rem;
     }
@@ -308,6 +323,66 @@
       padding: 1.8rem 1.5rem 1.5rem;
     }
   }
+  /* Modal styles */
+  #login-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  #login-modal form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  #login-modal h2 {
+    margin-top: 0;
+    color: #27408b;
+    margin-bottom: 1rem;
+  }
+  #login-modal label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  #login-modal input[type="text"],
+  #login-modal input[type="password"] {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.4rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  #login-modal button[type="submit"],
+  #login-modal button#cancel-login {
+    width: 100%;
+    padding: 0.6rem 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  #login-modal button[type="submit"] {
+    background: #27408b;
+    color: #fff;
+  }
+  #login-modal button#cancel-login {
+    background: #ccc;
+    margin-top: 1rem;
+  }
+  #login-error {
+    color: red;
+    margin-top: 1rem;
+    display: none;
+  }
 </style>
 </head>
 <body>
@@ -318,11 +393,18 @@
 </audio>
 
 <header>
-  <div class="branding container">
+  <div class="container branding">
     <img src="images/Logo2.png" alt="Kishor Creative Lab Logo" width="90" height="90" />
     <div>
       <h1>KishorCreativeLab</h1>
       <p>Blogging | Entertainment | Counseling for a Peaceful Life</p>
+    </div>
+
+    <!-- *** Login Controls Added Here *** -->
+    <div id="user-controls">
+      <button id="login-btn">Login</button>
+      <span id="user-greeting" style="display:none;"></span>
+      <button id="logout-btn" style="display:none;">Logout</button>
     </div>
   </div>
 </header>
@@ -474,11 +556,112 @@
   &copy; 2025 KishorCreativeLab · Bundi, Rajasthan, India &nbsp;|&nbsp;
   <a href="mailto:kishorcreativelab@gmail.com">Contact</a>
   <div class="social-icons" aria-label="Social Media Links">
-    <a href="https://twitter.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Twitter">&#x1F426;</a>
-    <a href="https://www.facebook.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Facebook">&#x1F464;</a>
-    <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">&#x1F4BB;</a>
+    <a href="https://twitter.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Twitter">🐦</a>
+    <a href="https://www.facebook.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Facebook">👤</a>
+    <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">💻</a>
   </div>
 </footer>
+
+<!-- Modal Login Form -->
+<div id="login-modal">
+  <form id="login-form" novalidate>
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input id="username" name="username" type="text" required autocomplete="username" />
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="password" required autocomplete="current-password" />
+    <button type="submit">Login</button>
+    <button type="button" id="cancel-login">Cancel</button>
+    <p id="login-error"></p>
+  </form>
+</div>
+
+<script>
+  // Simulated user database
+  const users = [
+    { username: "user1", password: "password1", displayName: "User One" },
+    { username: "nawalkishor", password: "peace123", displayName: "Nawal Kishor" }
+  ];
+
+  const loginBtn = document.getElementById('login-btn');
+  const logoutBtn = document.getElementById('logout-btn');
+  const userGreeting = document.getElementById('user-greeting');
+  const loginModal = document.getElementById('login-modal');
+  const loginForm = document.getElementById('login-form');
+  const cancelBtn = document.getElementById('cancel-login');
+  const loginError = document.getElementById('login-error');
+
+  // Show login modal
+  loginBtn.addEventListener('click', () => {
+    loginError.style.display = 'none';
+    loginModal.style.display = 'flex';
+    loginForm.username.focus();
+  });
+
+  // Hide login modal
+  cancelBtn.addEventListener('click', () => {
+    loginForm.reset();
+    loginModal.style.display = 'none';
+    loginError.style.display = 'none';
+  });
+
+  // Handle form submit for login
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = loginForm.username.value.trim();
+    const password = loginForm.password.value;
+
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+      // Save logged-in user to localStorage
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+      updateUserUI();
+      loginForm.reset();
+      loginModal.style.display = 'none';
+      loginError.style.display = 'none';
+    } else {
+      loginError.textContent = "Invalid username or password.";
+      loginError.style.display = 'block';
+      loginForm.password.value = '';
+      loginForm.password.focus();
+    }
+  });
+
+  // Logout user
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    updateUserUI();
+  });
+
+  // Update UI based on login state
+  function updateUserUI() {
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      loginBtn.style.display = 'none';
+      userGreeting.style.display = 'inline';
+      userGreeting.textContent = `Welcome, ${user.displayName}`;
+      logoutBtn.style.display = 'inline';
+    } else {
+      loginBtn.style.display = 'inline-block';
+      userGreeting.style.display = 'none';
+      userGreeting.textContent = '';
+      logoutBtn.style.display = 'none';
+    }
+  }
+
+  // Initialize UI on page load
+  updateUserUI();
+
+  // Close modal on Escape key press
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && loginModal.style.display === 'flex') {
+      loginForm.reset();
+      loginModal.style.display = 'none';
+      loginError.style.display = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>
