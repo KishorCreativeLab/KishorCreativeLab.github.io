@@ -1,602 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Entertainment Zone – KishorCreativeLab</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-  body {
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: #f1f5fc;
-    min-height: 100vh;
-    margin: 0;
-    color: #243447;
-  }
-  header {
-    background: linear-gradient(90deg, #27408b, #337abb);
-    color: #fff;
-    padding: 1.2rem 0;
-    box-shadow: 0 4px 14px rgb(51 122 187 / 0.5);
-  }
-  header .branding {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  header .branding img {
-    border-radius: 12px;
-    background: #fff;
-    padding: 3px;
-    width: 60px;
-    height: 60px;
-  }
-  header .branding div h1 {
-    margin: 0;
-    font-size: 1.9rem;
-  }
-  header .branding div span {
-    font-size: 1.15rem;
-    color: #ffe066;
-  }
-  nav {
-    background: #141f34;
-    border-bottom: 2px solid #ffcb05;
-  }
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-  }
-  nav li {
-    margin: 0;
-  }
-  nav a {
-    display: block;
-    padding: 1rem 1.4rem;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    transition: color 0.24s ease;
-  }
-  nav a.active,
-  nav a:hover,
-  nav a:focus {
-    color: #ffcb05;
-    border-bottom-color: #ffcb05;
-    outline: none;
-  }
-
-  main {
-    max-width: 850px;
-    margin: 2.4rem auto 2rem;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 40px #aec3e7a5;
-  }
-  h1, h2, h3 {
-    color: #27408b;
-  }
-  .ent-block {
-    margin-bottom: 2.6rem;
-  }
-  .joke-box {
-    background: #eaf2fe;
-    border-left: 6px solid #ffcb05;
-    padding: 1rem 1.2rem;
-    border-radius: 8px;
-    font-size: 1.08rem;
-    transition: background-color 0.3s ease;
-  }
-  .joke-box:hover {
-    background-color: #d1e7ff;
-  }
-  #fact-of-day {
-    margin: 0.7rem 0;
-    min-height: 2.5em;
-    transition: color 0.3s ease;
-  }
-  #doodle-canvas {
-    border: 2px dashed #337abb;
-    border-radius: 6px;
-    background: #f6fbf5;
-    cursor: crosshair;
-    touch-action: none;
-  }
-  button {
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 6px;
-    border: 2px solid #337abb;
-    background-color: #fff;
-    color: #337abb;
-    padding: 0.4rem 1rem;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  button:hover:not(:disabled),
-  button:focus:not(:disabled) {
-    background-color: #337abb;
-    color: #fff;
-    outline: none;
-  }
-  #game-board {
-    display: grid;
-    grid-template-columns: repeat(3, 60px);
-    width: 186px;
-    gap: 6px;
-    margin: 15px 0;
-    user-select: none;
-  }
-  #game-board div {
-    width: 60px;
-    height: 60px;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #eaf2fe;
-    border-radius: 12px;
-    transition: background-color 0.3s ease;
-  }
-  #game-board div:hover {
-    background-color: #d1e7ff;
-  }
-  #game-status {
-    font-weight: bold;
-    min-height: 1.5em;
-    margin-bottom: 0.8rem;
-  }
-  .poll-options button {
-    margin: 0.5rem;
-    padding: 0.35rem 1.1rem;
-    font-size: 1rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .poll-options button:hover,
-  .poll-options button:focus {
-    background-color: #337abb;
-    color: #fff;
-    outline: none;
-  }
-  #poll-result {
-    margin-top: 0.8rem;
-    font-weight: 600;
-    min-height: 1.3em;
-    color: #27408b;
-  }
-  .confetti {
-    pointer-events: none;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-  }
-  #virtual-pet {
-    margin-top: 1.2rem;
-    text-align: center;
-  }
-  #virtual-pet img {
-    vertical-align: middle;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(51, 122, 187, 0.4);
-    transition: transform 0.3s ease;
-  }
-  #virtual-pet img.hugged {
-    transform: scale(1.2);
-  }
-  #pet-message {
-    font-weight: 600;
-    margin-left: 0.8rem;
-    color: #337abb;
-  }
-  #konami-message {
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    color: #28a745;
-  }
-
-  /* About Section */
-  #about {
-    background: #ffffffec;
-    border-radius: 14px;
-    box-shadow: 0 8px 32px rgb(158 195 226 / 0.25);
-    padding: 2.5rem 2rem 2rem;
-    margin: 3rem auto 0;
-    max-width: 650px;
-    color: #27408b;
-  }
-  #about h2 {
-    font-weight: 700;
-    margin-bottom: 1.25rem;
-    font-size: 1.9rem;
-    border-bottom: 3px solid #eaeaea;
-    padding-bottom: 0.3rem;
-  }
-  #about p {
-    font-weight: 500;
-    font-size: 1.15rem;
-    line-height: 1.6;
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    #doodle-canvas {
-      width: 100%;
-      height: 150px;
-    }
-    #game-board {
-      margin: 15px auto;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rajasthan Stories – KishorCreativeLab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f1f5fc;
+      margin: 0;
+      color: #243447;
+      min-height: 100vh;
     }
     main {
-      width: 95%;
-      padding: 1.4rem 1rem;
-      margin-top: 1.5rem;
+      max-width: 850px;
+      margin: 2.4rem auto 2rem;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px #aec3e7a5;
     }
-  }
-</style>
+    h2 {
+      color: #ffb300;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    .rajasthan-stories article {
+      margin-bottom: 2.4rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #e1e7f4;
+    }
+    h3 { color: #337abb; font-size: 1.22rem; margin: .4rem 0; }
+    .story-buttons {
+      margin: 0.6rem 0 0.4rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .like-btn {
+      background:#ffe066;
+      border: none;
+      border-radius: 6px;
+      color:#27408b;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.2rem 1.1rem;
+      font-size:1rem;
+      transition: background 0.18s;
+    }
+    .like-btn:hover, .like-btn:focus { background: #ffd500; }
+    .comments-section { margin-top:0.7rem; }
+    .comments-list { padding-left: 0; }
+    .comments-list li {
+      background: #f6faff;
+      margin-bottom: 0.3rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      list-style: none;
+    }
+    .comment-input {
+      width: 90%;
+      padding: 0.4rem;
+      border-radius: 6px;
+      border: 1.5px solid #337abb;
+      margin-right: 0.4rem;
+    }
+    .comment-btn {
+      padding: 0.35rem 1rem;
+      border-radius: 6px;
+      border: none;
+      background: #337abb;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .comment-btn:hover { background: #27408b; }
+  </style>
 </head>
 <body>
-<header>
-  <div class="branding">
-    <img src="../images/Logo2.png" alt="KishorCreativeLab logo" />
-    <div>
-      <h1>Entertainment Zone</h1>
-      <span>Where Mindfulness Meets Fun!</span>
-    </div>
-  </div>
-</header>
-<nav>
-  <ul>
-    <li><a href="../../index.html">Home</a></li>
-    <li><a href="../Stories/Stories.html" aria-current="false">Story</a></li>
-    <li><a href="Entertainment.html" class="active" aria-current="page">Entertainment</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-<main>
-  <section class="ent-block" aria-labelledby="joke-title">
-    <h2 id="joke-title">😂 Joke of the Day <span class="badge" id="badge-joke" style="display:none;"></span></h2>
-    <div class="joke-box" id="joke-of-day" tabindex="0" aria-live="polite" role="region"></div>
-    <button onclick="randomJoke()" aria-label="Get another joke">Another joke</button>
-  </section>
-  <section class="ent-block" aria-labelledby="doodle-title">
-    <h2 id="doodle-title">🎨 Interactive Doodle Pad</h2>
-    <canvas id="doodle-canvas" width="380" height="150" aria-label="Interactive drawing canvas" role="img" tabindex="0"></canvas>
-    <br />
-    <button onclick="clearDoodle()" aria-label="Clear the drawing pad">Clear</button>
-  </section>
-  <section class="ent-block" aria-labelledby="music-title">
-    <h2 id="music-title">🎵 Background Music <button onclick="toggleMusic()" id="music-btn" aria-pressed="true" aria-live="polite">Pause</button></h2>
-    <audio id="bg-music" src="Music/Tranquil Reflections.mp3" loop autoplay></audio>
-  </section>
-  <section class="ent-block" aria-labelledby="tic-tac-toe-title">
-    <h2 id="tic-tac-toe-title">🎮 Simple Tic-Tac-Toe Game</h2>
-    <div id="game-board" role="grid" aria-label="Tic Tac Toe game board"></div>
-    <div id="game-status" aria-live="polite"></div>
-    <button onclick="resetGame()" aria-label="Restart the game">Restart</button>
-  </section>
-  <section class="ent-block" aria-labelledby="fact-title">
-    <h2 id="fact-title">🧑‍🔬 Fact of the Day</h2>
-    <div id="fact-of-day" tabindex="0" aria-live="polite" role="region" style="min-height:2em;"></div>
-    <button onclick="randomFact()" aria-label="Get a new fact">New fact</button>
-  </section>
-  <section class="ent-block" aria-labelledby="poll-title">
-    <h2 id="poll-title">📊 Quick Poll</h2>
-    <div>Which activity helps you relax?</div>
-    <div class="poll-options" role="radiogroup" aria-labelledby="poll-title">
-      <button onclick="poll('Reading')" role="radio" aria-checked="false" tabindex="0">Reading</button>
-      <button onclick="poll('Music')" role="radio" aria-checked="false" tabindex="-1">Music</button>
-      <button onclick="poll('Walking')" role="radio" aria-checked="false" tabindex="-1">Walking</button>
-      <button onclick="poll('Meditation')" role="radio" aria-checked="false" tabindex="-1">Meditation</button>
-    </div>
-    <div id="poll-result" aria-live="polite" style="min-height:1.3em;margin-top:0.5rem;"></div>
-  </section>
-  <section class="ent-block" aria-labelledby="confetti-title">
-    <h2 id="confetti-title">🎈 Confetti Button</h2>
-    <button onclick="showConfetti()" aria-label="Celebrate now with confetti">Celebrate Now!</button>
-    <canvas class="confetti" id="confetti-canvas" style="display:none;"></canvas>
-  </section>
-  <section class="ent-block" aria-labelledby="pet-title">
-    <h2 id="pet-title">🐾 Virtual Pet Companion</h2>
-    <div id="virtual-pet" aria-live="polite" aria-atomic="true" role="region">
-      <img src="../images/Virtul-Pet.gif" alt="Virtual-Pet" width="80" />
-      <br />
-      <button onclick="petHug()" aria-label="Give your virtual pet a hug">Give Hug ❤️</button> 
-      <span id="pet-message" aria-live="polite" role="status"></span>
-    </div>
-  </section>
+  <main>
+    <section>
+      <h2>📚 Rajasthan Entertainment Stories</h2>
+      <div class="rajasthan-stories">
 
-  <!-- About Section -->
-  <section id="about" aria-labelledby="about-title" tabindex="0">
-    <h2 id="about-title">About Entertainment</h2>
-    <p>
-      The Entertainment Zone at KishorCreativeLab is designed to brighten your day and nurture mindful joy. From refreshing jokes to interactive games and creative doodling, this place aims to help you relax, explore your creativity, and connect with lighthearted fun. Enjoy background music and engaging activities developed to bring smiles and moments of calm to your journey.
-    </p>
-  </section>
+        <!-- Story 1 -->
+        <article data-story="0">
+          <h3>1. Folk Tales Reborn – <span>"The Ballad of the Blue City"</span></h3>
+          <p>In Jodhpur, old storyteller Ustad Ali was losing his audience to modern gadgets. Determined, he started narrating tales in the bustling clock tower market, weaving stories about the origin of the Mehrangarh Fort’s blue walls and magical peacocks. Children, shopkeepers, and tourists gathered daily, enchanted by legends that transformed ordinary rooftops into scenes of ancient intrigue. Through his words, forgotten folktales danced back to life, rekindling the city’s love for its rich past.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(0)">👍 Like <span id="like-count-0">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-0"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-0" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(0)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 2 -->
+        <article data-story="1">
+          <h3>2. Royal Intrigue – <span>"The Heirloom"</span></h3>
+          <p>Princess Vanya of Udaipur possessed a centuries-old anklet said to grant courage. When it mysteriously vanished, suspicion fell on visiting diplomats. Young palace guard Sameer took it upon himself to find the heirloom, following cryptic clues hidden on palace murals. With wit and loyalty, he uncovered a plot by a rival family. In the Moonlight Palace’s mirrored halls, Sameer reclaimed the anklet, earning both the princess’s gratitude and Udaipur’s continued peace.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(1)">👍 Like <span id="like-count-1">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-1"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-1" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(1)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 3 -->
+        <article data-story="2">
+          <h3>3. Sports Spirit – <span>"The Camel Cup"</span></h3>
+          <p>Every Pushkar Fair, villages battle in the legendary Camel Polo Cup. This year, quiet village boy Salim joined as a last-minute substitute. Though mocked at first, his unique camel-riding style (learned from years farming dunes) stunned the crowds. Salim dodged, raced, and scored the winning goal. His team carried him through the fairgrounds, proving that skill can outshine fame—and Pushkar gained a new local legend.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(2)">👍 Like <span id="like-count-2">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-2"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-2" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(2)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 4 -->
+        <article data-story="3">
+          <h3>4. Urban Melodies – <span>"DJ at Chandpole"</span></h3>
+          <p>Sneha, an aspiring DJ from Jaipur, dreamed of uniting folk beats with electronic music. Mocked by traditionalists, she set up weekly shows under the iconic Chandpole Gate. Her remixes of ghoomar rhythms and modern synths drew diverse crowds—auto drivers, college students, even elderly dancers. When her music video went viral, Jaipur’s streets echoed with blended sounds, inspiring the next wave of musical fusion.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(3)">👍 Like <span id="like-count-3">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-3"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-3" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(3)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 5 -->
+        <article data-story="4">
+          <h3>5. Family Bonds – <span>"Monsoon at the Stepwell"</span></h3>
+          <p>When Bundi’s ancient baori (stepwell) threatened collapse after heavy rains, siblings Priya and Amit rallied their neighbors. Together, they hosted cultural evenings—kavi sammelans, puppet shows, and painting contests—to raise funds. As villagers bonded over laughter and storytelling, the baori was repaired with local donations. By reclaiming their shared heritage, Priya and Amit turned a crisis into lasting unity for Bundi.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(4)">👍 Like <span id="like-count-4">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-4"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-4" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(4)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 6 -->
+        <article data-story="5">
+          <h3>6. Supernatural Mystery – <span>"Shadow in Ranakpur"</span></h3>
+          <p>Temple caretaker Rekha began seeing a shadow flicker near Ranakpur’s marble pillars at twilight. Dismissed as superstition, her fears grew when she found ancient Sanskrit verses on the floor. With the help of a scholar, she deciphered the text and performed a forgotten ritual. The shadow faded, and the temple’s aura felt lighter. Word spread, and pilgrims now pay respects to both deity and the guardian who watches over them.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(5)">👍 Like <span id="like-count-5">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-5"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-5" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(5)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 7 -->
+        <article data-story="6">
+          <h3>7. Hidden Dreams – <span>"Threads of Fate in Sikar"</span></h3>
+          <p>Tara’s family ran a handloom shop in Sikar, crafting exquisite bandhni sarees. Longing to study animation, Tara began secretly sketching saree patterns as storyboards for fairy tales. When her designs caught a film director’s eye during a festival, she was invited to Jaipur to help animate a folk-tale-inspired short film. Tara’s journey bridged tradition and innovation, inspiring Sikar’s youth to pursue bold ambitions.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(6)">👍 Like <span id="like-count-6">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-6"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-6" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(6)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 8 -->
+        <article data-story="7">
+          <h3>8. Horror-Comedy – <span>"Ghost at the Haveli"</span></h3>
+          <p>Vikrant inherited a decrepit haveli near Chittorgarh, rumored to be haunted. Rather than flee, he set up a “haunted experience” for tourists, complete with fake cobwebs and hired actors. But then, a real ghostly prankster started swapping props and whispering jokes at night! Word spread, bookings tripled, and the ghost was credited as “Creative Director.” The haveli became Chittorgarh’s quirkiest attraction.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(7)">👍 Like <span id="like-count-7">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-7"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-7" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(7)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 9 -->
+        <article data-story="8">
+          <h3>9. Romantic Twist – <span>"Letters of Amber"</span></h3>
+          <p>Mehul, a Jaipur tour guide, kept finding handwritten love letters in Amber Fort’s secret alcoves. Tracking clues, he pieced together a decades-old romance thwarted by family feuds. When he finally reunited the now-elderly lovers at the fort’s gardens, their families reconciled after years of silence. The letters, restored and displayed, brought visitors from across Rajasthan to witness a real-life fairy tale.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(8)">👍 Like <span id="like-count-8">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-8"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-8" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(8)">Comment</button>
+          </div>
+        </article>
+        <!-- Story 10 -->
+        <article data-story="9">
+          <h3>10. Coming-of-Age – <span>"Desert Filmmaker"</span></h3>
+          <p>Seventeen-year-old Anya lived in Barmer, dreaming of making movies about her desert homeland. Borrowing a neighbor’s mobile, she filmed everyday village life—women fetching water, Holi celebrations, music at sundown. Sharing them online, her vlogs attracted filmmakers who visited to collaborate. Anya’s lens gave Barmer’s beauty and struggles a voice, proving that powerful stories can bloom even amid shifting sands.</p>
+          <div class="story-buttons">
+            <button class="like-btn" onclick="likeStory(9)">👍 Like <span id="like-count-9">0</span></button>
+          </div>
+          <div class="comments-section">
+            <ul class="comments-list" id="comments-9"></ul>
+            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-9" maxlength="120"/>
+            <button class="comment-btn" onclick="addComment(9)">Comment</button>
+          </div>
+        </article>
 
-  <!-- Contact (you can keep existing or use modern style from prior answer) -->
-  <section id="contact" aria-labelledby="contact-title" style="max-width: 650px; margin: 3rem auto 2rem auto; background: #ffffffec; border-radius: 14px; box-shadow: 0 8px 32px rgb(158 195 226 / 0.25); padding: 2.5rem 2rem 2rem; font-size: 1.1rem; color: #243447;">
-    <h2 id="contact-title" style="color: #27408b; border-bottom: 3px solid #eaeaea; padding-bottom: 0.3rem; font-weight: 700; margin-bottom: 1.25rem; font-size: 1.9rem;">
-      Contact
-    </h2>
-    <ul style="list-style-type: none; padding-left: 0; line-height: 1.8; font-size: 1.1rem;">
-      <li>Email: 
-        <a href="mailto:kishorcreativelab@gmail.com" style="color: #337abb; font-weight: 600; text-decoration: none;">kishorcreativelab@gmail.com</a>
-      </li>
-      <li>GitHub: 
-        <a href="https://github.com/kishorcreativelab" target="_blank" rel="noopener noreferrer" style="color: #337abb; font-weight: 600; text-decoration: none;">
-          kishorcreativelab
-        </a>
-      </li>
-    </ul>
-  </section>
+      </div>
+    </section>
+  </main>
+  <script>
+    // --- Persistent Like/Comment logic using localStorage ---
 
-  <!-- Donate Section -->
-  <section id="donate" aria-labelledby="donate-title" style="max-width: 650px; margin: 0 auto 3rem auto; background: #fff8e1; border-radius: 14px; box-shadow: 0 8px 32px rgba(255, 203, 5, 0.3); padding: 2.5rem 2rem 2rem; text-align: center; color: #27408b; font-size: 1.2rem; font-weight: 600;">
-    <h2 id="donate-title" style="margin-bottom: 1rem; font-size: 2rem; font-weight: 700; color: #ffb300; text-shadow: 1px 1px 3px rgba(255, 203, 5, 0.6);">
-      Support KishorCreativeLab
-    </h2>
-    <p style="margin-bottom: 1.8rem; max-width: 520px; margin-left: auto; margin-right: auto; font-weight: 500;">
-      If you enjoy the content and want to support my work, please consider making a donation via PayPal.
-    </p>
-    <a href="https://paypal.me/rnawal7742" target="_blank" rel="noopener noreferrer" class="donate-link" 
-       style="
-         display: inline-block; 
-         background-color: #ffcb05; 
-         color: #27408b; 
-         padding: 0.9rem 2.2rem; 
-         border-radius: 12px; 
-         font-weight: 700;
-         font-size: 1.1rem; 
-         text-decoration: none; 
-         box-shadow: 0 4px 10px rgba(255, 203, 5, 0.5);
-         transition: background-color 0.3s ease, box-shadow 0.3s ease;
-       "
-       onmouseover="this.style.backgroundColor='#ffd500'; this.style.boxShadow='0 6px 14px rgba(255, 213, 80, 0.7)';"
-       onmouseout="this.style.backgroundColor='#ffcb05'; this.style.boxShadow='0 4px 10px rgba(255, 203, 5, 0.5)';"
-       aria-label="Donate via PayPal">
-      Donate via PayPal
-    </a>
-  </section>
-</main>
-
-<footer style="text-align:center;background:linear-gradient(90deg, #27408b, #337abb);color:#fff;padding:1.2rem 0;margin-top:2rem;font-size:1rem;">
-  &copy; 2025 KishorCreativeLab · <a href="mailto:kishorcreativelab@gmail.com" style="color:#ffe066;">Contact</a>
-</footer>
-
-<script>
-// 1. Joke of the Day & Gamification
-const jokes = [
-  "Why don’t scientists trust atoms? Because they make up everything!",
-  "Why did the developer go broke? Because he used up all his cache.",
-  "Parallel lines have so much in common. It’s a shame they’ll never meet.",
-  "What do you call a factory that makes good products? A satisfactory.",
-  "Why do JavaScript developers wear glasses? Because they don’t see sharp.",
-  "Why don’t programmers like nature? It has too many bugs.",
-  "How many programmers does it take to change a light bulb? None, that’s a hardware problem.",
-  "Why do Java developers wear glasses? Because they don’t see sharp.",
-  "I told my computer I needed a break, and it said: “No problem — I’ll go to sleep.”",
-  "Why was the math book sad? Because it had too many problems.",
-  "Why do Python programmers prefer snakes? Because they love their code to be unwrapped.",
-  "What did the zero say to the eight? Nice belt!",
-  "Why do computers always sing? Because they have lots of bytes.",
-  "How do you comfort a JavaScript bug? You console it.",
-  "What is a programmer’s favorite hangout place? Foo Bar.",
-  "What did the HTML tag say to the CSS? You’re so pretty, you style me.",
-  "Why can’t your nose be 12 inches long? Because then it would be a foot.",
-  "Why was the cell phone wearing glasses? Because it lost its contacts.",
-  "What did one keyboard say to another? You’re my type!",
-  "Why do hackers wear leather jackets? Because they’re part of the cyberpunk.",
-  "What do you get when you cross a computer and a lifeguard? A screensaver.",
-  "What is an algorithm? Word used by programmers when they don’t want to explain what they did.",
-  "Why did the programmer quit his job? Because he didn’t get arrays.",
-  "What do you call 8 hobbits? A hobbyte.",
-  "Why did the computer go to the doctor? It had a virus.",
-  "What does a baby computer call his father? Data.",
-  "Why was the JavaScript developer sad? Because he didn’t Node how to Express himself.",
-  "What do you call a social robot? A friend request.",
-  "How do you know if a computer is tired? It has a hard drive.",
-  "Why did the coder bring a ladder? To climb the stack.",
-  "Why was the developer drowning? Because he forgot to close his tags.",
-  "What do programmers do in the morning? Code-o-cino.",
-  "Why did the cloud break up with the server? Too many bad connections.",
-  "How does a computer get drunk? It takes screenshots.",
-  "What did the binary code say to the decimal code? You’re over my head."
-];
-function randomJoke() {
-  const idx = Math.floor(Math.random() * jokes.length);
-  document.getElementById('joke-of-day').innerText = jokes[idx];
-  document.getElementById('badge-joke').style.display = idx === 1 ? 'inline-block' : 'none';
-}
-window.onload = randomJoke;
-
-// 2. Doodle pad
-const canvas = document.getElementById('doodle-canvas');
-const ctx = canvas.getContext('2d');
-let painting = false;
-canvas.onpointerdown = () => { painting = true; };
-canvas.onpointerup = () => { painting = false; ctx.beginPath(); };
-canvas.onpointerout = () => { painting = false; ctx.beginPath(); }; 
-canvas.onpointermove = e => {
-  if (!painting) return;
-  const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.strokeStyle = '#337abb';
-  ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath();
-  ctx.moveTo(x, y);
-};
-function clearDoodle() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // For accessibility announce cleared content
-  alert('Doodle pad cleared');
-}
-
-// 3. Background music toggle
-function toggleMusic() {
-  const music = document.getElementById('bg-music');
-  const btn = document.getElementById('music-btn');
-  if (music.paused) {
-    music.play();
-    btn.textContent = 'Pause';
-    btn.setAttribute('aria-pressed', 'true');
-  } else {
-    music.pause();
-    btn.textContent = 'Play';
-    btn.setAttribute('aria-pressed', 'false');
-  }
-}
-
-// 4. Simple Tic Tac Toe
-const boardElem = document.getElementById('game-board');
-let board, xIsNext, finished;
-function drawBoard() {
-  boardElem.innerHTML = '';
-  for (let i = 0; i < 9; i++) {
-    const cell = document.createElement('div');
-    cell.setAttribute('role', 'gridcell');
-    cell.style = "width:60px;height:60px;font-size:2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#eaf2fe;border-radius:12px;";
-    cell.tabIndex = finished || board[i] ? -1 : 0;
-    cell.innerText = board[i];
-    if (!board[i] && !finished) cell.onclick = () => move(i);
-    boardElem.appendChild(cell);
-  }
-}
-function resetGame() {
-  board = Array(9).fill('');
-  xIsNext = true;
-  finished = false;
-  drawBoard();
-  document.getElementById('game-status').innerText = '';
-}
-function move(i) {
-  if (board[i] || finished) return;
-  board[i] = xIsNext ? 'X' : 'O';
-  xIsNext = !xIsNext;
-  drawBoard();
-  const win = (a, b, c) => board[a] && board[a] === board[b] && board[a] === board[c];
-  if (
-    [0, 3, 6].some(i => win(i, i + 1, i + 2)) ||
-    [0, 1, 2].some(i => win(i, i + 3, i + 6)) ||
-    win(0, 4, 8) ||
-    win(2, 4, 6)
-  ) {
-    document.getElementById('game-status').innerText = `${board[i]} wins!`;
-    finished = true;
-  } else if (board.every(x => x)) {
-    document.getElementById('game-status').innerText = 'Draw!';
-    finished = true;
-  }
-}
-resetGame();
-
-// 5. Fact of the Day
-const facts = [
-  "Honey never spoils. Archaeologists have found edible honey in ancient tombs!",
-  "Cows have best friends and can become stressed if separated.",
-  "Bananas are berries, but strawberries are not.",
-  "Octopuses have three hearts and blue blood.",
-  "Laughter increases blood flow and boosts immune response."
-];
-function randomFact() {
-  const factElem = document.getElementById('fact-of-day');
-  factElem.style.color = '#345678';
-  factElem.innerText = facts[Math.floor(Math.random() * facts.length)];
-}
-randomFact();
-
-// 6. Polls
-let pollVotes = { Reading: 0, Music: 0, Walking: 0, Meditation: 0 };
-function poll(choice) {
-  pollVotes[choice]++;
-  let total = Object.values(pollVotes).reduce((a, b) => a + b, 0);
-  let str = Object.entries(pollVotes)
-    .map(([opt, v]) => `${opt}: ${(v / total * 100 || 0).toFixed(0)}%`)
-    .join(' | ');
-  document.getElementById('poll-result').innerText = `Results: ${str}`;
-  // Update aria-checked states on buttons
-  const buttons = document.querySelectorAll('.poll-options button');
-  buttons.forEach(btn => {
-    btn.setAttribute('aria-checked', btn.textContent === choice ? 'true' : 'false');
-    btn.tabIndex = btn.textContent === choice ? 0 : -1;
-  });
-}
-
-// 7. Confetti
-function showConfetti() {
-  const confetti = document.getElementById('confetti-canvas');
-  confetti.width = window.innerWidth;
-  confetti.height = window.innerHeight;
-  confetti.style.display = 'block';
-  const ctx = confetti.getContext('2d');
-  const colors = ['#ffd500', '#337abb', '#87e6c5', '#a674f2', '#ffe066'];
-  let pieces = Array.from({ length: 100 }, () => ({
-    x: Math.random() * confetti.width,
-    y: Math.random() * confetti.height,
-    dy: 2 + Math.random() * 2,
-    color: colors[Math.floor(Math.random() * colors.length)],
-    size: 8 + Math.random() * 8
-  }));
-  let frame = 0;
-  function draw() {
-    ctx.clearRect(0, 0, confetti.width, confetti.height);
-    for (let p of pieces) {
-      ctx.fillStyle = p.color;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y + frame * p.dy / 4, p.size, 0, 2 * Math.PI);
-      ctx.fill();
+    // Helpers
+    function getPersistedLikes() {
+      try {
+        return JSON.parse(localStorage.getItem('rajasthanLikes')) || Array(10).fill(0);
+      } catch {
+        return Array(10).fill(0);
+      }
     }
-    frame++;
-    if (frame < 70) requestAnimationFrame(draw);
-    else confetti.style.display = 'none';
-  }
-  draw();
-}
+    function setPersistedLikes(likes) {
+      localStorage.setItem('rajasthanLikes', JSON.stringify(likes));
+    }
+    function getPersistedComments() {
+      try {
+        return JSON.parse(localStorage.getItem('rajasthanComments')) || Array(10).fill().map(() => []);
+      } catch {
+        return Array(10).fill().map(() => []);
+      }
+    }
+    function setPersistedComments(comments) {
+      localStorage.setItem('rajasthanComments', JSON.stringify(comments));
+    }
 
-// 8. Virtual Pet
-function petHug() {
-  const petImg = document.querySelector('#virtual-pet img');
-  const msgSpan = document.getElementById('pet-message');
-  petImg.classList.add('hugged');
-  const msg = ["Your pet smiles 😊", "It purrs softly 🐾", "It feels loved! 💖"];
-  const randomMsg = msg[Math.floor(Math.random() * msg.length)];
-  msgSpan.textContent = randomMsg;
-  setTimeout(() => {
-    msgSpan.textContent = '';
-    petImg.classList.remove('hugged');
-  }, 2000);
-}
+    // State
+    let likes = getPersistedLikes();
+    let comments = getPersistedComments();
 
-// 9. Konami Code Easter Egg
-let konami = [];
-const konamiSeq = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-document.body.addEventListener('keydown', evt => {
-  konami.push(evt.keyCode);
-  if (konami.length > 10) konami = konami.slice(-10);
-  if (JSON.stringify(konami) === JSON.stringify(konamiSeq)) {
-    document.getElementById('konami-message').innerHTML = '🎉 You found the Easter Egg! Have a mindful, magical day!';
-    showConfetti();
-  }
-});
-</script>
+    function renderLikes() {
+      for (let i = 0; i < likes.length; i++) {
+        const likeCount = document.getElementById('like-count-' + i);
+        if (likeCount) likeCount.textContent = likes[i];
+      }
+    }
+
+    function renderAllComments() {
+      for (let i = 0; i < comments.length; i++) {
+        renderComments(i);
+      }
+    }
+
+    function likeStory(idx) {
+      likes[idx]++;
+      setPersistedLikes(likes);
+      document.getElementById('like-count-' + idx).textContent = likes[idx];
+    }
+
+    function addComment(idx) {
+      const input = document.getElementById('input-' + idx);
+      const commentText = input.value.trim();
+      if (commentText.length > 0) {
+        comments[idx].push(commentText);
+        setPersistedComments(comments);
+        renderComments(idx);
+        input.value = '';
+      }
+    }
+
+    function renderComments(idx) {
+      const ul = document.getElementById('comments-' + idx);
+      ul.innerHTML = '';
+      comments[idx].forEach(comment => {
+        const li = document.createElement('li');
+        li.textContent = comment;
+        ul.appendChild(li);
+      });
+    }
+
+    // on page load
+    renderLikes();
+    renderAllComments();
+  </script>
 </body>
 </html>
