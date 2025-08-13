@@ -1,257 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rajasthan Stories – KishorCreativeLab</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: #f1f5fc;
-      margin: 0;
-      color: #243447;
-      min-height: 100vh;
-    }
-    nav {
-      background: linear-gradient(90deg, #27408b, #337abb);
-      display: flex;
-      justify-content: center;
-      padding: 0.8rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffcb05;
-    }
-    main {
-      max-width: 850px;
-      margin: 2.4rem auto 2rem;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 40px #aec3e7a5;
-    }
-    h2 {
-      color: #ffb300;
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-    }
-    .rajasthan-stories article {
-      margin-bottom: 2.4rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid #e1e7f4;
-    }
-    h3 { color: #337abb; font-size: 1.22rem; margin: .4rem 0; }
-    .story-buttons {
-      margin: 0.6rem 0 0.4rem 0;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-    .like-btn {
-      background:#ffe066;
-      border: none;
-      border-radius: 6px;
-      color:#27408b;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 0.2rem 1.1rem;
-      font-size:1rem;
-      transition: background 0.18s;
-    }
-    .like-btn:hover, .like-btn:focus { background: #ffd500; }
-    .comments-section { margin-top:0.7rem; }
-    .comments-list { padding-left: 0; }
-    .comments-list li {
-      background: #f6faff;
-      margin-bottom: 0.3rem;
-      padding: 0.4rem 0.7rem;
-      border-radius: 6px;
-      list-style: none;
-    }
-    .comment-input {
-      width: 90%;
-      padding: 0.4rem;
-      border-radius: 6px;
-      border: 1.5px solid #337abb;
-      margin-right: 0.4rem;
-    }
-    .comment-btn {
-      padding: 0.35rem 1rem;
-      border-radius: 6px;
-      border: none;
-      background: #337abb;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .comment-btn:hover { background: #27408b; }
-    /* Additional section styling */
-    section.extra {
-      background: #ffffffec;
-      border-radius: 14px;
-      box-shadow: 0 8px 32px rgb(158 195 226 / 0.25);
-      padding: 2rem;
-      max-width: 850px;
-      margin: 2rem auto;
-    }
-    section.extra h2 {
-      border-bottom: 3px solid #eaeaea;
-      padding-bottom: 0.3rem;
-      color: #27408b;
-    }
-    footer {
-      background: linear-gradient(90deg, #27408b, #337abb);
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-      margin-top: 2rem;
-    }
-    footer a {
-      color: #ffe066;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rajasthan Stories – KishorCreativeLab</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+/* === Base Page Styles === */
+body { font-family:'Montserrat',Arial,sans-serif; background:#f1f5fc; margin:0; color:#243447; min-height:100vh;}
+nav { background:linear-gradient(90deg,#27408b,#337abb); display:flex; justify-content:center; padding:0.8rem; position:sticky; top:0; z-index:100;}
+nav a { color:#fff; text-decoration:none; margin:0 1rem; font-weight:600; transition:color 0.3s;}
+nav a:hover { color:#ffcb05;}
+main { max-width:850px; margin:2.4rem auto 2rem; padding:2rem; background:#fff; border-radius:16px; box-shadow:0 8px 40px #aec3e7a5;}
+h2 { color:#ffb300; font-size:2rem; margin-bottom:1.2rem;}
+h3 { color:#337abb; font-size:1.22rem; margin:.4rem 0;}
+.rajasthan-stories article { margin-bottom:2.4rem; padding-bottom:1.2rem; border-bottom:1px solid #e1e7f4;}
+.story-image { width:100%; max-height:230px; object-fit:cover; border-radius:8px 8px 0 0; margin-bottom:0.8em;}
+.story-buttons { margin:0.6rem 0 0.4rem; display:flex; gap:1rem; flex-wrap:wrap;}
+.like-btn { background:#ffe066; border:none; border-radius:6px; color:#27408b; font-weight:700; cursor:pointer; padding:0.2rem 1.1rem; font-size:1rem; transition:background 0.18s;}
+.like-btn:hover { background:#ffd500;}
+.read-more-btn { background:#337abb; color:#fff; border:none; border-radius:6px; margin-left:0.7em; font-size:.95em; cursor:pointer; padding:0.17rem 1rem; font-weight:600; transition:background 0.2s;}
+.read-more-btn:hover { background:#27408b;}
+.comments-section { margin-top:0.7rem;}
+.comments-list { padding-left:0;}
+.comments-list li { background:#f6faff; margin-bottom:0.3rem; padding:0.4rem 0.7rem; border-radius:6px; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+.comment-buttons { display:flex; gap:0.3em;}
+.comment-input { width:90%; padding:0.4rem; border-radius:6px; border:1.5px solid #337abb; margin-right:0.4rem;}
+.comment-btn { padding:0.35rem 1rem; border-radius:6px; border:none; background:#337abb; color:#fff; font-weight:600; cursor:pointer;}
+.comment-btn:hover { background:#27408b;}
+section.extra { background:#ffffffec; border-radius:14px; box-shadow:0 8px 32px rgba(158,195,226,0.25); padding:2rem; max-width:850px; margin:2rem auto;}
+section.extra h2 { border-bottom:3px solid #eaeaea; padding-bottom:0.3rem; color:#27408b;}
+/* Modal & Carousel */
+.modal-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1099; background:rgba(30,50,110,0.35); align-items:center; justify-content:center;}
+.modal-overlay.active { display:flex;}
+.modal-content { background:#fffbe7; color:#243447; border-radius:16px; box-shadow:0 8px 40px rgba(174,195,231,0.6); max-width:95vw; width:390px; padding:1.4em 1.5em;}
+.modal-title { color:#337abb; font-size:1.19rem; margin-top:0; margin-bottom:0.6em;}
+.modal-image { width:100%; max-height:200px; object-fit:cover; border-radius:7px; margin-bottom:1em;}
+.close-btn { background:#ffe066; color:#27408b; border:none; border-radius:8px; padding:0.25em 1.1em; font-weight:700; cursor:pointer;}
+.close-btn:hover { background:#337abb; color:#fff;}
+.carousel-btn { position:absolute; top:45%; transform:translateY(-50%); background:#ffe066; border:none; padding:0.3em 0.6em; border-radius:50%; font-size:1.2em; color:#27408b; cursor:pointer;}
+#prev-img { left:-1.5em;}
+#next-img { right:-1.5em;}
+.carousel-btn:hover { background:#337abb; color:#fff;}
+@media (max-width:600px){
+  main{width:98vw;padding:1.15rem 0.5rem;}
+  .modal-content{width:96vw;padding:1em;}
+  #prev-img{left:-0.5em;}
+  #next-img{right:-0.5em;}
+}
+</style>
 </head>
 <body>
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#donate">Donate</a>
+</nav>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">🏠 Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a href="#donate">Donate</a>
-  </nav>
+<main>
+  <section>
+    <h2>📚 Rajasthan Entertainment Stories</h2>
+    <div class="rajasthan-stories" id="story-container"></div>
 
-  <main>
-    <section>
-      <h2>📚 Rajasthan Entertainment Stories</h2>
-      <div class="rajasthan-stories">
-
-        <!-- Stories (full list as in your current code) -->
-        <!-- Example: Story 1 -->
-        <article data-story="0">
-          <h3>1. Folk Tales Reborn – <span>"The Ballad of the Blue City"</span></h3>
-          <p>In Jodhpur, old storyteller Ustad Ali was losing his audience to modern gadgets. Determined, he started narrating tales...</p>
-          <div class="story-buttons">
-            <button class="like-btn" onclick="likeStory(0)">👍 Like <span id="like-count-0">0</span></button>
-          </div>
-          <div class="comments-section">
-            <ul class="comments-list" id="comments-0"></ul>
-            <input class="comment-input" type="text" placeholder="Add a comment..." id="input-0" maxlength="120"/>
-            <button class="comment-btn" onclick="addComment(0)">Comment</button>
-          </div>
-        </article>
-        <!-- Repeat for stories 2–10 exactly as in your existing markup -->
-        <!-- ... -->
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-content">
+        <h3 class="modal-title" id="modal-title"></h3>
+        <div style="position:relative;">
+          <button id="prev-img" class="carousel-btn" onclick="prevImage()">&#10094;</button>
+          <img id="modal-image" class="modal-image" src="" alt="" />
+          <button id="next-img" class="carousel-btn" onclick="nextImage()">&#10095;</button>
+        </div>
+        <p id="modal-full"></p>
+        <button class="close-btn" onclick="hideModal()">Close</button>
       </div>
-    </section>
-  </main>
-
-  <!-- About Section -->
-  <section id="about" class="extra">
-    <h2>About</h2>
-    <p>KishorCreativeLab is dedicated to storytelling, creativity, and sharing Rajasthan's cultural richness. This page celebrates entertaining tales that inspire and connect communities — both locally and around the world.</p>
+    </div>
   </section>
+</main>
 
-  <!-- Contact Section -->
-  <section id="contact" class="extra">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:kishorcreativelab@gmail.com">kishorcreativelab@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/kishorcreativelab" target="_blank">github.com/kishorcreativelab</a></p>
-  </section>
+<section id="about" class="extra">
+  <h2>About</h2>
+  <p>KishorCreativeLab is dedicated to storytelling, creativity, and sharing Rajasthan's cultural richness.</p>
+</section>
+<section id="contact" class="extra">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:kishorcreativelab@gmail.com">kishorcreativelab@gmail.com</a></p>
+  <p>GitHub: <a href="https://github.com/kishorcreativelab" target="_blank">github.com/kishorcreativelab</a></p>
+</section>
+<section id="donate" class="extra" style="text-align:center;">
+  <h2>Support My Work</h2>
+  <p>If you enjoy these stories, please consider supporting my creative journey.</p>
+  <a href="https://paypal.me/rnawal7742" target="_blank"
+     style="display:inline-block;background-color:#ffcb05;color:#27408b;padding:0.8rem 1.6rem;border-radius:12px;font-weight:700;text-decoration:none;">
+    Donate via PayPal
+  </a>
+</section>
 
-  <!-- Donation Section -->
-  <section id="donate" class="extra" style="text-align:center;">
-    <h2>Support My Work</h2>
-    <p>If you enjoy these stories, please consider supporting my creative journey.</p>
-    <a href="https://paypal.me/rnawal7742" target="_blank"
-       style="display:inline-block;background-color:#ffcb05;color:#27408b;padding:0.8rem 1.6rem;border-radius:12px;font-weight:700;text-decoration:none;">
-      Donate via PayPal
-    </a>
-  </section>
+<footer>
+  &copy; 2025 KishorCreativeLab · Bundi, Rajasthan, India · <a href="mailto:kishorcreativelab@gmail.com">Email Me</a>
+</footer>
 
-  <footer>
-    &copy; 2025 KishorCreativeLab · Bundi, Rajasthan, India · <a href="mailto:kishorcreativelab@gmail.com">Email Me</a>
-  </footer>
+<script>
+// Full stories with multiple images each:
+const stories = [
+  {
+    title: '1. Folk Tales Reborn – "The Ballad of the Blue City"',
+    images: ["images/jodhpur1.jpg","images/jodhpur2.jpg"],
+    content: `In Jodhpur, old storyteller Ustad Ali was losing his audience to modern gadgets. Determined, he started narrating tales in the bustling clock tower market, weaving stories about the origin of the Mehrangarh Fort’s blue walls and magical peacocks. Children, shopkeepers, and tourists gathered daily, enchanted by legends that transformed ordinary rooftops into scenes of ancient intrigue. Through his words, forgotten folktales danced back to life, rekindling the city’s love for its rich past.`
+  },
+  {
+    title: '2. Royal Intrigue – "The Heirloom"',
+    images: ["images/udaipur1.jpg","images/udaipur2.jpg"],
+    content: `Princess Vanya of Udaipur possessed a centuries-old anklet said to grant courage. When it mysteriously vanished, suspicion fell on visiting diplomats. Young palace guard Sameer took it upon himself to find the heirloom, following cryptic clues hidden on palace murals. With wit and loyalty, he uncovered a plot by a rival family. In the Moonlight Palace’s mirrored halls, Sameer reclaimed the anklet, earning both the princess’s gratitude and Udaipur’s continued peace.`
+  },
+  {
+    title: '3. Sports Spirit – "The Camel Cup"',
+    images: ["images/pushkar1.jpg","images/pushkar2.jpg"],
+    content: `Every Pushkar Fair, villages battle in the legendary Camel Polo Cup. This year, quiet village boy Salim joined as a last-minute substitute. Though mocked at first, his unique camel-riding style (learned from years farming dunes) stunned the crowds. Salim dodged, raced, and scored the winning goal. His team carried him through the fairgrounds, proving that skill can outshine fame—and Pushkar gained a new local legend.`
+  },
+  {
+    title: '4. Urban Melodies – "DJ at Chandpole"',
+    images: ["images/jaipur_dj.jpg"],
+    content: `Sneha, an aspiring DJ from Jaipur, dreamed of uniting folk beats with electronic music. Mocked by traditionalists, she set up weekly shows under the iconic Chandpole Gate. Her remixes of ghoomar rhythms and modern synths drew diverse crowds—auto drivers, college students, even elderly dancers. When her music video went viral, Jaipur’s streets echoed with blended sounds, inspiring the next wave of musical fusion.`
+  },
+  {
+    title: '5. Family Bonds – "Monsoon at the Stepwell"',
+    images: ["images/bundi1.jpg","images/bundi2.jpg"],
+    content: `When Bundi’s ancient baori (stepwell) threatened collapse after heavy rains, siblings Priya and Amit rallied their neighbors. Together, they hosted cultural evenings—kavi sammelans, puppet shows, and painting contests—to raise funds. As villagers bonded over laughter and storytelling, the baori was repaired with local donations. By reclaiming their shared heritage, Priya and Amit turned a crisis into lasting unity for Bundi.`
+  },
+  {
+    title: '6. Supernatural Mystery – "Shadow in Ranakpur"',
+    images: ["images/ranakpur1.jpg"],
+    content: `Temple caretaker Rekha began seeing a shadow flicker near Ranakpur’s marble pillars at twilight. Dismissed as superstition, her fears grew when she found ancient Sanskrit verses on the floor. With the help of a scholar, she deciphered the text and performed a forgotten ritual. The shadow faded, and the temple’s aura felt lighter. Word spread, and pilgrims now pay respects to both deity and the guardian who watches over them.`
+  },
+  {
+    title: '7. Hidden Dreams – "Threads of Fate in Sikar"',
+    images: ["images/sikar1.jpg"],
+    content: `Tara’s family ran a handloom shop in Sikar, crafting exquisite bandhni sarees. Longing to study animation, Tara began secretly sketching saree patterns as storyboards for fairy tales. When her designs caught a film director’s eye during a festival, she was invited to Jaipur to help animate a folk-tale-inspired short film. Tara’s journey bridged tradition and innovation, inspiring Sikar’s youth to pursue bold ambitions.`
+  },
+  {
+    title: '8. Horror-Comedy – "Ghost at the Haveli"',
+    images: ["images/chittor1.jpg","images/chittor2.jpg"],
+    content: `Vikrant inherited a decrepit haveli near Chittorgarh, rumored to be haunted. Rather than flee, he set up a “haunted experience” for tourists, complete with fake cobwebs and hired actors. But then, a real ghostly prankster started swapping props and whispering jokes at night! Word spread, bookings tripled, and the ghost was credited as “Creative Director.” The haveli became Chittorgarh’s quirkiest attraction.`
+  },
+  {
+    title: '9. Romantic Twist – "Letters of Amber"',
+    images: ["images/amber1.jpg","images/amber2.jpg"],
+    content: `Mehul, a Jaipur tour guide, kept finding handwritten love letters in Amber Fort’s secret alcoves. Tracking clues, he pieced together a decades-old romance thwarted by family feuds. When he finally reunited the now-elderly lovers at the fort’s gardens, their families reconciled after years of silence. The letters, restored and displayed, brought visitors from across Rajasthan to witness a real-life fairy tale.`
+  },
+  {
+    title: '10. Coming-of-Age – "Desert Filmmaker"',
+    images: ["images/barmer1.jpg","images/barmer2.jpg"],
+    content: `Seventeen-year-old Anya lived in Barmer, dreaming of making movies about her desert homeland. Borrowing a neighbor’s mobile, she filmed everyday village life—women fetching water, Holi celebrations, music at sundown. Sharing them online, her vlogs attracted filmmakers who visited to collaborate. Anya’s lens gave Barmer’s beauty and struggles a voice, proving that powerful stories can bloom even amid shifting sands.`
+  }
+];
 
-  <script>
-    // --- Persistent Like/Comment logic using localStorage ---
-    function getPersistedLikes() {
-      try {
-        return JSON.parse(localStorage.getItem('rajasthanLikes')) || Array(10).fill(0);
-      } catch {
-        return Array(10).fill(0);
-      }
+/* Persist Likes & Comments */
+function getPersistedLikes(){ try{return JSON.parse(localStorage.getItem('rajasthanLikes'))||Array(stories.length).fill(0);}catch{return Array(stories.length).fill(0);} }
+function setPersistedLikes(l){ localStorage.setItem('rajasthanLikes',JSON.stringify(l)); }
+function getPersistedComments(){ try{return JSON.parse(localStorage.getItem('rajasthanComments'))||Array(stories.length).fill().map(()=>[]);}catch{return Array(stories.length).fill().map(()=>[]);} }
+function setPersistedComments(c){ localStorage.setItem('rajasthanComments',JSON.stringify(c)); }
+
+let likes=getPersistedLikes(), comments=getPersistedComments();
+
+/* Render Stories */
+function renderStories(){
+  const container=document.getElementById('story-container'); container.innerHTML='';
+  stories.forEach((story,i)=>{
+    const art=document.createElement('article');
+    if(story.images[0]){
+      const img=document.createElement('img'); img.src=story.images[0]; img.alt=story.title; img.className='story-image'; img.onerror=function(){this.style.display="none"}; art.appendChild(img);
     }
-    function setPersistedLikes(likes) {
-      localStorage.setItem('rajasthanLikes', JSON.stringify(likes));
-    }
-    function getPersistedComments() {
-      try {
-        return JSON.parse(localStorage.getItem('rajasthanComments')) || Array(10).fill().map(() => []);
-      } catch {
-        return Array(10).fill().map(() => []);
-      }
-    }
-    function setPersistedComments(comments) {
-      localStorage.setItem('rajasthanComments', JSON.stringify(comments));
-    }
+    const h3=document.createElement('h3'); h3.textContent=story.title; art.appendChild(h3);
+    const p=document.createElement('p'); p.textContent=story.content.slice(0,100)+'... ';
+    const rm=document.createElement('button'); rm.className='read-more-btn'; rm.textContent='Read More'; rm.onclick=()=>showModal(i);
+    p.appendChild(rm); art.appendChild(p);
+    const sb=document.createElement('div'); sb.className='story-buttons';
+    const lb=document.createElement('button'); lb.className='like-btn'; lb.innerHTML=`👍 Like <span id="like-count-${i}">${likes[i]}</span>`; lb.onclick=()=>likeStory(i); sb.appendChild(lb);
+    art.appendChild(sb);
+    const cs=document.createElement('div'); cs.className='comments-section';
+    const ul=document.createElement('ul'); ul.id='comments-'+i; ul.className='comments-list'; cs.appendChild(ul);
+    const inp=document.createElement('input'); inp.id='input-'+i; inp.className='comment-input'; inp.placeholder='Add a comment...'; inp.maxLength=120;
+    const cb=document.createElement('button'); cb.textContent='Comment'; cb.className='comment-btn'; cb.onclick=()=>addComment(i);
+    cs.appendChild(inp); cs.appendChild(cb); art.appendChild(cs);
+    container.appendChild(art);
+    renderComments(i);
+  });
+}
 
-    let likes = getPersistedLikes();
-    let comments = getPersistedComments();
+/* Likes & Comments logic */
+function likeStory(idx){ likes[idx]++; setPersistedLikes(likes); document.getElementById('like-count-'+idx).textContent=likes[idx]; }
+function addComment(idx){ const input=document.getElementById('input-'+idx); const txt=input.value.trim(); if(txt){ comments[idx].push(txt); setPersistedComments(comments); renderComments(idx); input.value=''; } }
+function renderComments(idx){ const ul=document.getElementById('comments-'+idx); ul.innerHTML=''; comments[idx].forEach((c,ci)=>{ const li=document.createElement('li'); li.textContent=c; const btns=document.createElement('span'); btns.className='comment-buttons'; const ebtn=document.createElement('button'); ebtn.textContent='✏'; ebtn.onclick=()=>editComment(idx,ci); const dbtn=document.createElement('button'); dbtn.textContent='🗑'; dbtn.onclick=()=>deleteComment(idx,ci); btns.appendChild(ebtn); btns.appendChild(dbtn); li.appendChild(btns); ul.appendChild(li); }); }
+function editComment(si,ci){ const nt=prompt("Edit your comment:",comments[si][ci]); if(nt!==null&&nt.trim()!==''){ comments[si][ci]=nt.trim(); setPersistedComments(comments); renderComments(si);} }
+function deleteComment(si,ci){ if(confirm("Delete this comment?")){ comments[si].splice(ci,1); setPersistedComments(comments); renderComments(si);} }
 
-    function renderLikes() {
-      for (let i = 0; i < likes.length; i++) {
-        const likeCount = document.getElementById('like-count-' + i);
-        if (likeCount) likeCount.textContent = likes[i];
-      }
-    }
+/* Modal Carousel */
+let currentImages=[], currentImgIndex=0;
+function showModal(idx){ document.getElementById('modal-title').textContent=stories[idx].title; currentImages=stories[idx].images; currentImgIndex=0; updateModalImage(); document.getElementById('modal-full').textContent=stories[idx].content; document.getElementById('modal-overlay').classList.add('active'); }
+function hideModal(){ document.getElementById('modal-overlay').classList.remove('active'); }
+function updateModalImage(){ const el=document.getElementById('modal-image'); if(currentImages.length){ el.src=currentImages[currentImgIndex]; el.style.display=''; } else el.style.display='none'; }
+function nextImage(){ if(currentImages.length){ currentImgIndex=(currentImgIndex+1)%currentImages.length; updateModalImage(); } }
+function prevImage(){ if(currentImages.length){ currentImgIndex=(currentImgIndex-1+currentImages.length)%currentImages.length; updateModalImage(); } }
+window.onclick=e=>{ if(e.target===document.getElementById('modal-overlay')) hideModal(); }
+window.onkeydown=e=>{ if(e.key==="Escape") hideModal(); }
 
-    function renderAllComments() {
-      for (let i = 0; i < comments.length; i++) {
-        renderComments(i);
-      }
-    }
-
-    function likeStory(idx) {
-      likes[idx]++;
-      setPersistedLikes(likes);
-      document.getElementById('like-count-' + idx).textContent = likes[idx];
-    }
-
-    function addComment(idx) {
-      const input = document.getElementById('input-' + idx);
-      const commentText = input.value.trim();
-      if (commentText.length > 0) {
-        comments[idx].push(commentText);
-        setPersistedComments(comments);
-        renderComments(idx);
-        input.value = '';
-      }
-    }
-
-    function renderComments(idx) {
-      const ul = document.getElementById('comments-' + idx);
-      ul.innerHTML = '';
-      comments[idx].forEach(comment => {
-        const li = document.createElement('li');
-        li.textContent = comment;
-        ul.appendChild(li);
-      });
-    }
-
-    renderLikes();
-    renderAllComments();
-  </script>
+renderStories();
+</script>
 </body>
 </html>
